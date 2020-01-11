@@ -2,13 +2,17 @@ from so_parser import StackOverflowCarrers
 import pandas as pd
 from collections import defaultdict, Counter
 import os
-import json 
+import json
+import ast
+import numpy as np
+
 
 class Aggregator:
     def __init__(self):
-        self.src = 'data/stack_overflow_careers'
+        self.src = '../data/stack_overflow_careers'
         self.SOC = StackOverflowCarrers(100)
-        self.db = pd.read_csv('db.csv')
+        self.db = pd.read_pickle('db.pkl')
+        self.unique_roles = self.db['Role'].unique()
 
     def build_statistics(self):
         filenames = [os.path.join(self.src, fn) for fn in os.listdir(self.src)]
@@ -25,23 +29,24 @@ class Aggregator:
             except Exception as e:
                 print(f"Failed {filename}")
         df = pd.DataFrame.from_dict(statistics)
-        db = db.dropna(subset=['Role'])
+        df = df.dropna(subset=['Role'])
         # parse string which encodes a list to an actual list
-        db['Skills'] = db['tags'].apply(lambda x: np.array(ast.literal_eval(x))
-                                        )
-        df.to_csv('db.csv')
+        # df['Skills'] = df['Tags'].apply(lambda x: np.array(ast.literal_eval(x))
+                                        # )
+        df.to_pickle('db.pkl')
 
-    def search_in_db(self, role):
+    def search_in_db(self, role, limit=None):
         """
         Return statistics for a role from a db 
         """
         new_roles = self.db.loc[self.db['Role'].isin([role])]
-        all_tags = new_roles['Skills'].to_numpy()
+        all_tags = new_roles['Tags'].to_numpy()
         # flatten all tags
+        print(all_tags)
         flat_tags = np.concatenate(all_tags).ravel()
         c = Counter(flat_tags)
         final_statistics = defaultdict(dict)
-        for k, v in c.items():
+        for k, v in c.most_common(limit):
             final_statistics[k] = {
                 'count': v,
                 'percentage': v * 100 / len(new_roles)
@@ -52,3 +57,4 @@ class Aggregator:
 if __name__ == '__main__':
     ag = Aggregator()
     # ag.build_statistics()
+    print(ag.search_in_db('Product Manager', 2))
