@@ -23,7 +23,7 @@ def hello():
 def reverse_search():
     skills = request.args['skills'].split("+")
     print(skills)
-    return "{Devel123: 30%, Devel567: 50%}"
+    return '[{"title": "senior java developer", "result": 50}, {"title": "asfdasdf", "result": 10}]'
 
 @app.route('/search', methods=['GET'])
 def search():
