@@ -1,6 +1,8 @@
-env/
-.vscode/
-*.exe
-venv/
-*.swp
 __pycache__/
+websites/
+.vscode/
+venv/
+env/
+
+*.swp
+*.exe
