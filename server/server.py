@@ -25,15 +25,12 @@ def hello():
 def reverse_search():
     skills = request.args['skills'].lower().split("+")[:-1]
     print(skills)
-    limit = None #request.args['limit']
+    limit = request.args['limit']
     try:
         limit = int(limit)
     except:
         limit = None
-    temp = r_search.perform_search(skills, limit)
-    print('test', temp)
-    return temp
-    #return '[{"title": "senior java developer", "result": 50}, {"title": "asfdasdf", "result": 10}]'
+    return r_search.perform_search(skills, limit)
 
 @app.route('/search', methods=['GET'])
 def search():

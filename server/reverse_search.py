@@ -26,7 +26,6 @@ class ReverseSearch:
         pickle.dump(reverse_dict, open("reverse_dict.pkl", "wb"))
 
     def perform_search(self, words, limit=None):
-        print(words, limit)
         data = []
         for word in words:
             data.extend(self.reverse_dict[word])
@@ -40,8 +39,6 @@ class ReverseSearch:
             'percentage': v * 100 / len(words)
         }
         return json.dumps(final_statistics)
-
-
 
 if __name__ == "__main__":
     rs = ReverseSearch()
