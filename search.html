@@ -83,30 +83,49 @@
 </body>
 
 <script>
+    var filled = false;
 
     $(document).ready(function () {
         console.log("ready!");
     });
 
     function callAjax() {
+        if (filled) {
+            $("#mainTable").fadeOut(300);
+            $("#mainTable").html("<tr></tr>");
+            $("#mainTable").fadeIn(1000);
+        }
+
         console.log("calling!");
         $("#spinner").css("visibility", "visible");
+        filled = true;
+
         $.ajax({
             url: "http://127.0.0.1:5000/search",
             data: {
-                text: $('#positionName').val()
+                text: $('#positionName').val(),
+                limit: 20
             },
             success: function (result) {
-                console.log(result);
-                addRow(result);
+                if (result == "\"\"") {
+                    notFound();
+                }
+                else {
+                    console.log(result.length);
+                    var result_arr = JSON.parse(result);
+                    setTimeout(function () {
+
+                        result_arr.forEach(element => {
+                            addRow(element);
+                        });
+                    }, 1000);
+                }
             }
         });
     };
 
-    function addRow(row) {
-        var parsedRow = JSON.parse(row);
-
-        var crafted = craftRow(parsedRow.name, parsedRow.age);
+    function addRow(parsedRow) {
+        var crafted = craftRow(parsedRow.skill, parsedRow.percentage);
         $("#spinner").remove();
 
         $("#mainTable").fadeIn(1000);
@@ -128,7 +147,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-1" style="font-family: sans-serif bold">
                                 ${value}%
                             </div>
                         </div>
@@ -137,6 +156,26 @@
             </tr>`
         return row;
     }
+
+    function notFound() {
+        row = `<tr>
+                <td align="left">No results found</td>
+                </tr>`
+        $("#spinner").remove();
+
+        $("#mainTable").fadeIn(1000);
+
+        $('#mainTable tr:last').after(row);
+
+    }
+
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            callAjax();
+            return false;
+        }
+    });
 </script>
 
 </html>

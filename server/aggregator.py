@@ -5,6 +5,25 @@ import os
 import json
 import ast
 import numpy as np
+import re
+
+def term_in_doc(t, d):
+    if t in d:
+        return True
+    else:
+        return False
+    
+def calc_tfidf(t, d, D):
+    """
+    All specific role create a document    
+    """
+    freqs = [D[role][t] for role in D]
+    tmax = max(freqs)
+    tf = 0.5 + \
+        0.5*d[t]/tmax
+    x = [term_in_doc(t, D[role]) for role in D]
+    idf = np.log(len(d)/sum(x))
+    return tf*idf
 
 
 class Aggregator:
@@ -13,6 +32,7 @@ class Aggregator:
         self.SOC = StackOverflowCarrers(100)
         self.db = pd.read_pickle('db.pkl')
         self.unique_roles = self.db['Role'].unique()
+        self.role_tfidf = self.create_documents_counts(self.db)
 
     def build_statistics(self):
         filenames = [os.path.join(self.src, fn) for fn in os.listdir(self.src)]
@@ -32,29 +52,65 @@ class Aggregator:
         df = df.dropna(subset=['Role'])
         # parse string which encodes a list to an actual list
         # df['Skills'] = df['Tags'].apply(lambda x: np.array(ast.literal_eval(x))
-                                        # )
+        # )
         df.to_pickle('db.pkl')
 
     def search_in_db(self, role, limit=None):
         """
         Return statistics for a role from a db 
         """
-        new_roles = self.db.loc[self.db['Role'].isin([role])]
+        new_roles = self.db.loc[self.db['Role'].str.contains(
+            role, flags=re.IGNORECASE, regex=True)]
         all_tags = new_roles['Tags'].to_numpy()
         # flatten all tags
-        print(all_tags)
-        flat_tags = np.concatenate(all_tags).ravel()
-        c = Counter(flat_tags)
-        final_statistics = defaultdict(dict)
-        for k, v in c.most_common(limit):
-            final_statistics[k] = {
-                'count': v,
-                'percentage': v * 100 / len(new_roles)
-            }
-        return json.dumps(final_statistics)
+        if all_tags.any():
+            flat_tags = np.concatenate(all_tags).ravel()
+            c = Counter(flat_tags)
+            final_statistics = []
+            for k, v in c.most_common(limit):
+                final_statistics.append({
+                    'skill':
+                    k,
+                    'count':
+                    v,
+                    'percentage':
+                    int(v * 100 / len(new_roles))
+                })
+            return json.dumps(final_statistics)
+        else:
+            return json.dumps("")
 
+    def create_documents_counts(self, df):
+        global_counts = Counter()
+        role_counts = {}
+        for role in df['Role'].unique():
+            if not role: 
+                continue
+            skillset = df['Tags'].loc[df['Role'] == role].to_numpy()
+            # flatten all tags
+            flat_tags = np.concatenate(skillset).ravel()
+            tcount = Counter(flat_tags)
+            global_counts += tcount
+            if role not in role_counts:
+                role_counts[role] = Counter()
+            role_counts[role] += tcount
+            
+        tfidf_role = {}
+        for role in df['Role'].unique():
+            if not role:
+                continue
+            tfidf_role[role] = Counter()
+            skillset = df['Tags'].loc[df['Role'] == role].to_numpy()
+            flat_tags = np.concatenate(skillset).ravel()
+            # print(f"Role {role}")
+            for skill in flat_tags:
+                score = calc_tfidf(skill, role_counts[role], role_counts)
+                # print(f"\t{skill}: {score}")
+                tfidf_role[role][skill] = score
+                
+        return tfidf_role
 
 if __name__ == '__main__':
     ag = Aggregator()
     # ag.build_statistics()
-    print(ag.search_in_db('Product Manager', 2))
+    print(ag.search_in_db('Data *', 10))
