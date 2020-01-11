@@ -10,20 +10,28 @@ class noFluffJobsParser():
         self.results = []
 
         self.ens_data = {
-            'Role': [],
-            'Tags' : []
+            'Role':       [],
+            'Tags' :      [],
+            'additional': []
         }
 
     def parse_data(self, data):
         bs = BeautifulSoup(data, 'html.parser')
         role = bs.find('nfj-posting-header', {'id': 'posting-header'}).find('h1').getText()
         tags = []
+        additional = {}
 
         for aux in bs.findAll('nfj-posting-requirements'):
             for tag in aux.findAll('button'):
-                tags += [tag.getText()]
+                tags += [tag.getText().replace('\n','')]
 
-        return role, tags
+        for aux in bs.find('nfj-posting-specs', {'id': 'posting-specs'}).findAll('div', {'class': 'row'}):
+            title = aux.find('div', {'class', 'col-sm-6'}).getText()
+            value = aux.find('div', {'class', 'col-sm-6 value'}).getText()
+
+            additional[title] = value
+
+        return role, tags, additional
 
     def parse_files(self, filenames):
         for filename in filenames:
@@ -32,11 +40,12 @@ class noFluffJobsParser():
 
             with open(filename, 'r', encoding = 'utf-8') as f:
                 data = f.read()
-                role, tags = parser.parse_data(data)
+                role, tags, additional = parser.parse_data(data)
 
                 if tags:
                     self.ens_data['Role'] += [role]
                     self.ens_data['Tags'] += [tags]
+                    self.ens_data['additional'] += [additional]
 
 if __name__ == '__main__':
     parser = noFluffJobsParser()
@@ -44,8 +53,6 @@ if __name__ == '__main__':
     ls = os.listdir('noFluffJobs/websites')
 
     parser.parse_files(['./noFluffJobs/websites/' + dir for dir in ls])
-
-    print(parser.ens_data)
 
     df = pd.DataFrame.from_dict(parser.ens_data)
 
