@@ -1,7 +1,8 @@
 from so_parser import StackOverflowCarrers
 import pandas as pd
-from collections import defaultdict
-import os 
+from collections import defaultdict, Counter
+import os
+import json 
 
 class Aggregator:
     def __init__(self):
@@ -24,10 +25,29 @@ class Aggregator:
             except Exception as e:
                 print(f"Failed {filename}")
         df = pd.DataFrame.from_dict(statistics)
+        db = db.dropna(subset=['Role'])
+        # parse string which encodes a list to an actual list
+        db['Skills'] = db['tags'].apply(lambda x: np.array(ast.literal_eval(x))
+                                        )
         df.to_csv('db.csv')
 
-    def search_in_db(self, position):
-        positions = self.db.loc[self.db['Role'] == position]
+    def search_in_db(self, role):
+        """
+        Return statistics for a role from a db 
+        """
+        new_roles = self.db.loc[db['Role'].isin([role])]
+        all_tags = new_roles['Skills'].to_numpy()
+        # flatten all tags
+        flat_tags = np.concatenate(all_tags).ravel()
+        c = Counter(flat_tags)
+        final_statistics = defaultdict(dict)
+        for k, v in c.items():
+            final_statistics[k] = {
+                'count': v,
+                'percentage': v * 100 / len(new_roles)
+            }
+        return json.dumps(final_statistics)
+
 
 if __name__ == '__main__':
     ag = Aggregator()
