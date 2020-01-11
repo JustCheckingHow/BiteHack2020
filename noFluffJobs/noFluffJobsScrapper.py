@@ -6,6 +6,7 @@ from selenium import webdriver
 import re
 import os
 from os import path
+import time
 
 class fluffScrapper():
 
@@ -79,6 +80,15 @@ class fluffScrapper():
 
         self.driver.execute_script("arguments[0].click();", self.driver.find_element_by_xpath('//*[text()="»"]'))
 
+    def first_page(self):
+
+        try:
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//*[text()=" 1 "]')))
+        except:
+            pass
+
+        self.driver.execute_script("arguments[0].click();", self.driver.find_element_by_xpath('//*[text()=" 1 "]'))
+
     def on_last_tab(self):
 
         try:
@@ -116,6 +126,8 @@ if __name__ == '__main__':
 
     for category in scrapper.categories:
         scrapper.search(category)
+
+        scrapper.first_page()
 
         while not scrapper.on_last_tab():
             scrapper.get_page_links()

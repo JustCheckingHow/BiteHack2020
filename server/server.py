@@ -2,8 +2,11 @@ from flask import Flask, request
 from flask_cors import CORS
 app = Flask(__name__)
 import json
+from aggregator import Aggregator
 
 CORS(app)
+
+aggregator = Aggregator()
 
 @app.route('/')
 def hello():
@@ -16,16 +19,16 @@ def hello():
             </script>
             <div onclick='send_ajax()' style='width:100px;height:100px;background-color:red'></div>"""
 
+@app.route('/reverse_search', methods=['GET'])
+def reverse_search():
+    skills = request.args['skills'].split("+")
+    print(skills)
+    return "{Devel123: 30%, Devel567: 50%}"
+
 @app.route('/search', methods=['GET'])
 def search():
-    x = {
-      "name": "John",
-      "age": 30,
-      "city": "New York"
-    }
-
-    print(json.dumps(x))
-    return json.dumps(x)
+    temp = aggregator.search_in_db(request.args['text'], int(request.args['limit']))
+    return temp
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
