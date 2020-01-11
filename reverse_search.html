@@ -43,7 +43,7 @@
 <!-- #e1b794 #7f94a3 #e3e3e3-->
 
 <body style="background-color:#FAFAFA">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="position: fixed; width: 100%; top: 0;">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="search.html">Search</a>
@@ -59,11 +59,11 @@
             <div class="d-flex justify-content-center">
                 <form class="form col-12">
                     <div class="form-group mx-auto mb-2 row">
-                        <input type="text" class="form-control col-12 form-control-lg" id="inputPassword2"
+                        <input type="text" class="form-control col-12 form-control-lg" id="mainSkills"
                             placeholder="Main skills (separated with commas)">
                     </div>
                     <div class="form-group mx-auto mb-2 row">
-                        <input type="text" class="form-control col-12 form-control-lg" id="inputPassword2"
+                        <input type="text" class="form-control col-12 form-control-lg" id="additionalSkills"
                             placeholder="Additional skills (separated with commas)">
                     </div>
 
@@ -97,12 +97,21 @@
     });
 
     function callAjax() {
-        console.log("calling!");
+        var main_skills = $("#mainSkills").val();
+        var additional_skills = $("#additionalSkills").val();
+        var all_skills = main_skills.split(',').concat(additional_skills.split(','));
+        all_skills = all_skills.map(function (e) {
+            e = e.trim();
+            return e;
+        });
+        all_skills = all_skills.join('+');
+
+        console.log(all_skills);
         $("#spinner").css("visibility", "visible");
         $.ajax({
-            url: "http://127.0.0.1:5000/search",
+            url: "http://127.0.0.1:5000/reverse_search",
             data: {
-                test: "asdf"
+                skills: all_skills
             },
             success: function (result) {
                 console.log(result);
