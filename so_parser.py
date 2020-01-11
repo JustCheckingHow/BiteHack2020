@@ -76,8 +76,8 @@ class StackOverflowCarrers:
 
 
 if __name__ == "__main__":
-    soc = StackOverflowCarrers(1)
-    soc.main_scrapper(0.2)
+    soc = StackOverflowCarrers(10000)
+    soc.main_scrapper(2)
     # print(
     #     soc.parse_job_posting(
     #         'data/stack_overflow_careers/Senior_Android_Developer.html'))
