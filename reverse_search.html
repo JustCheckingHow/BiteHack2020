@@ -91,12 +91,19 @@
 </body>
 
 <script>
+    var filled = true;
 
     $(document).ready(function () {
         console.log("ready!");
     });
 
     function callAjax() {
+        if (filled) {
+            $("#mainTable").fadeOut(300);
+            $("#mainTable").html("<tr></tr>");
+            $("#mainTable").fadeIn(1000);
+        }
+
         var main_skills = $("#mainSkills").val();
         var additional_skills = $("#additionalSkills").val();
         var all_skills = main_skills.split(',').concat(additional_skills.split(','));
@@ -114,10 +121,14 @@
                 skills: all_skills
             },
             success: function (result) {
+                if(result===""){
+
+                }
                 var result_arr = JSON.parse(result);
                 result_arr.forEach(element => {
                     addRow(element);
                 });
+
             }
         });
     };
@@ -130,6 +141,12 @@
         $("#mainTable").fadeIn(1000);
 
         $('#mainTable tr:last').after(crafted);
+    }
+
+    function notFound(){
+        row = `<tr>
+                <td align="left">No results found</td>
+            </tr>`
     }
 
     function craftRow(skill, value) {
