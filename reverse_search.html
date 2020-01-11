@@ -114,16 +114,17 @@
                 skills: all_skills
             },
             success: function (result) {
-                console.log(result);
-                addRow(result);
+                var result_arr = JSON.parse(result);
+                result_arr.forEach(element => {
+                    addRow(element);
+                });
             }
         });
     };
 
-    function addRow(row) {
-        var parsedRow = JSON.parse(row);
-
-        var crafted = craftRow(parsedRow.name, parsedRow.age);
+    function addRow(parsedRow) {
+        console.log(parsedRow);
+        var crafted = craftRow(parsedRow.title, parsedRow.result);
         $("#spinner").remove();
 
         $("#mainTable").fadeIn(1000);
