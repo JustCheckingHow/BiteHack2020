@@ -3,3 +3,4 @@ env/
 *.exe
 venv/
 *.swp
+__pycache__/
