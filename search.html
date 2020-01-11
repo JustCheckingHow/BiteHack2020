@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hexa recruitment helper</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 3px #e3e3e3;
+        }
+
+        #mainTable {
+            display: none;
+        }
+
+        .spinner-border {
+            color: #e3e3e3;
+        }
+    </style>
+</head>
+
+<!-- #e1b794 #7f94a3 #e3e3e3-->
+
+<body style="background-color:#FAFAFA">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Search <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="reverse_search.html">Reverse search</a>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+        <img src="img/partial_logo.png" class="mx-auto d-block" style="padding-top: 0%; padding-bottom: 0%">
+        <div class="sticky-top" style="background-color: #FAFAFA;">
+            <img src="img/name.png" class="mx-auto d-block">
+            <div class="d-flex row justify-content-center">
+                <form class="form-inline col-12">
+                    <div class="form-group mx-auto mb-2 col-11">
+                        <input type="text" class="form-control col-12 form-control-lg" id="inputPassword2"
+                            placeholder="Position name">
+                    </div>
+                    <button type="button" class="btn mb-2 btn-lg col-1" style="background-color:#7f94a3; color: white"
+                        onclick="javascript:callAjax(); return false">Search</button>
+                </form>
+            </div>
+        </div>
+        <div id="spinner" class="d-flex row mt-5 col" style="visibility: hidden">
+            <div class="spinner-grow spinner-border mx-auto" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="d-flex row mt-5 col-8 mx-auto">
+            <table id="mainTable" class="table" style="background-color: white;">
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready!");
+    });
+
+    function callAjax() {
+        console.log("calling!");
+        $("#spinner").css("visibility", "visible");
+        $.ajax({
+            url: "http://127.0.0.1:5000/search",
+            data: {
+                test: "asdf"
+            },
+            success: function (result) {
+                console.log(result);
+                addRow(result);
+            }
+        });
+    };
+
+    function addRow(row) {
+        var parsedRow = JSON.parse(row);
+
+        var crafted = craftRow(parsedRow.name, parsedRow.age);
+        $("#spinner").remove();
+
+        $("#mainTable").fadeIn(1000);
+
+        $('#mainTable tr:last').after(crafted);
+    }
+
+    function craftRow(skill, value) {
+        row = `<tr>
+                <td align="left">${skill}</td>
+                <td align="center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10 mt-1">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar"
+                                        style="width: ${value}%; background-color: #e1b794;" aria-valuenow="${value}"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                ${value}%
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>`
+        return row;
+    }
+</script>
+
+</html>

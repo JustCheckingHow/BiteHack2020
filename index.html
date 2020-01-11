@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Hexa recruitment helper</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -41,11 +40,26 @@
                     <input type="text" class="form-control col-12 form-control-lg" id="inputPassword2"
                         placeholder="Position name">
                 </div>
-                <button type="submit" class="btn mb-2 btn-lg col-1"
-                    style="background-color:#7f94a3; color: white">Search</button>
+                <button type="button" class="btn mb-2 btn-lg col-1" style="background-color:#7f94a3; color: white"
+                    onclick="javascript:callAjax(); return false">Search</button>
             </form>
         </div>
     </div>
 </body>
+
+<script>
+    $(document).ready(function () {
+        console.log("ready!");
+    });
+
+    function callAjax() {
+        console.log("calling!");
+        $.ajax({
+            url: "requirements.txt", success: function (result) {
+                console.log(result);
+            }
+        });
+    };
+</script>
 
 </html>
