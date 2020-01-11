@@ -83,14 +83,23 @@
 </body>
 
 <script>
+    var filled = false;
 
     $(document).ready(function () {
         console.log("ready!");
     });
 
     function callAjax() {
+        if (filled) {
+            $("#mainTable").fadeOut(300);
+            $("#mainTable").html("<tr></tr>");
+            $("#mainTable").fadeIn(1000);
+        }
+
         console.log("calling!");
         $("#spinner").css("visibility", "visible");
+        filled = true;
+
         $.ajax({
             url: "http://127.0.0.1:5000/search",
             data: {
@@ -98,11 +107,16 @@
                 limit: 10
             },
             success: function (result) {
-                console.log(result);
-                var result_arr = JSON.parse(result);
-                result_arr.forEach(element => {
-                    addRow(element);
-                });
+                if (result=="\"\"") {
+                    notFound();
+                }
+                else {
+                    console.log(result.length);
+                    var result_arr = JSON.parse(result);
+                    result_arr.forEach(element => {
+                        addRow(element);
+                    });
+                }
             }
         });
     };
@@ -138,6 +152,18 @@
                 </td>
             </tr>`
         return row;
+    }
+
+    function notFound() {
+        row = `<tr>
+                <td align="left">No results found</td>
+                </tr>`
+        $("#spinner").remove();
+
+        $("#mainTable").fadeIn(1000);
+
+        $('#mainTable tr:last').after(row);
+
     }
 </script>
 
