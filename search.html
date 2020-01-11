@@ -104,18 +104,21 @@
             url: "http://127.0.0.1:5000/search",
             data: {
                 text: $('#positionName').val(),
-                limit: 10
+                limit: 20
             },
             success: function (result) {
-                if (result=="\"\"") {
+                if (result == "\"\"") {
                     notFound();
                 }
                 else {
                     console.log(result.length);
                     var result_arr = JSON.parse(result);
-                    result_arr.forEach(element => {
-                        addRow(element);
-                    });
+                    setTimeout(function () {
+
+                        result_arr.forEach(element => {
+                            addRow(element);
+                        });
+                    }, 1000);
                 }
             }
         });
@@ -144,7 +147,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-1" style="font-family: sans-serif bold">
                                 ${value}%
                             </div>
                         </div>
@@ -165,6 +168,14 @@
         $('#mainTable tr:last').after(row);
 
     }
+
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            callAjax();
+            return false;
+        }
+    });
 </script>
 
 </html>

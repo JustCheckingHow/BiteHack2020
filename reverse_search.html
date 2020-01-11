@@ -53,10 +53,10 @@
     </nav>
 
     <div class="container">
-        <img src="img/partial_logo.png" class="mx-auto d-block" style="padding-top: 0%; padding-bottom: 0%">
+        <img src="img/partial_logo.png" class="mx-auto d-block" style="padding-top: 5%; padding-bottom: 0%">
         <div class="sticky-top" style="background-color: #FAFAFA;">
             <img src="img/name.png" class="mx-auto d-block">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex row justify-content-center">
                 <form class="form col-12">
                     <div class="form-group mx-auto mb-2 row">
                         <input type="text" class="form-control col-12 form-control-lg" id="mainSkills"
@@ -91,7 +91,7 @@
 </body>
 
 <script>
-    var filled = true;
+    var filled = false;
 
     $(document).ready(function () {
         console.log("ready!");
@@ -121,13 +121,15 @@
                 skills: all_skills
             },
             success: function (result) {
-                if(result===""){
+                if (result === "") {
 
                 }
                 var result_arr = JSON.parse(result);
-                result_arr.forEach(element => {
-                    addRow(element);
-                });
+                setTimeout(function () {
+                    result_arr.forEach(element => {
+                        addRow(element);
+                    });
+                }, 1000);
 
             }
         });
@@ -143,12 +145,25 @@
         $('#mainTable tr:last').after(crafted);
     }
 
-    function notFound(){
+    function notFound() {
         row = `<tr>
                 <td align="left">No results found</td>
-            </tr>`
+                </tr>`
+        $("#spinner").remove();
+
+        $("#mainTable").fadeIn(1000);
+
+        $('#mainTable tr:last').after(row);
+
     }
 
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            callAjax();
+            return false;
+        }
+    });
     function craftRow(skill, value) {
         row = `<tr>
                 <td align="left">${skill}</td>
