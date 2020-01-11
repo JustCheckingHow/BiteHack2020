@@ -3,10 +3,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 import json
 from aggregator import Aggregator
+from reverse_search import ReverseSearch
 
 CORS(app)
 
 aggregator = Aggregator()
+r_search = ReverseSearch()
 
 @app.route('/')
 def hello():
@@ -22,13 +24,12 @@ def hello():
 @app.route('/reverse_search', methods=['GET'])
 def reverse_search():
     skills = request.args['skills'].split("+")
-    print(skills)
-    return '[{"title": "senior java developer", "result": 50}, {"title": "asfdasdf", "result": 10}]'
+    return r_search.reverse_search(skills, int(requests.args['limit']))
+    #return '[{"title": "senior java developer", "result": 50}, {"title": "asfdasdf", "result": 10}]'
 
 @app.route('/search', methods=['GET'])
 def search():
-    temp = aggregator.search_in_db(request.args['text'], int(request.args['limit']))
-    return temp
+    return aggregator.search_in_db(request.args['text'], int(request.args['limit']))
     
 if __name__ == '__main__':
     app.run()
