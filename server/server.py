@@ -23,8 +23,16 @@ def hello():
 
 @app.route('/reverse_search', methods=['GET'])
 def reverse_search():
-    skills = request.args['skills'].split("+")
-    return r_search.reverse_search(skills, int(requests.args['limit']))
+    skills = request.args['skills'].lower().split("+")[:-1]
+    print(skills)
+    limit = None #request.args['limit']
+    try:
+        limit = int(limit)
+    except:
+        limit = None
+    temp = r_search.perform_search(skills, limit)
+    print('test', temp)
+    return temp
     #return '[{"title": "senior java developer", "result": 50}, {"title": "asfdasdf", "result": 10}]'
 
 @app.route('/search', methods=['GET'])

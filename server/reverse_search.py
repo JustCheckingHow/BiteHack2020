@@ -1,6 +1,7 @@
 import pandas as pd
 import pickle
-from collections import defaultdict
+from collections import defaultdict, Counter
+import json
 
 
 class ReverseSearch:
@@ -8,6 +9,7 @@ class ReverseSearch:
         try:
             self.reverse_dict = pickle.load(open("reverse_dict.pkl", "rb"))
         except:
+            print("Unable to load pickle, generating...")
             self.prepare_db()
     
     def prepare_db(self):
@@ -23,7 +25,8 @@ class ReverseSearch:
 
         pickle.dump(reverse_dict, open("reverse_dict.pkl", "wb"))
 
-    def reverse_search(self, words, limit=None):
+    def perform_search(self, words, limit=None):
+        print(words, limit)
         data = []
         for word in words:
             data.extend(self.reverse_dict[word])
