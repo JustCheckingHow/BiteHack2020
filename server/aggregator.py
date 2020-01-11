@@ -50,7 +50,7 @@ class Aggregator:
                 final_statistics.append({
                     'skill': k,
                     'count': v,
-                    'percentage': v * 100 / len(new_roles)
+                    'percentage': int(v * 100 / len(new_roles))
                 })
             return json.dumps(final_statistics)
         else:
