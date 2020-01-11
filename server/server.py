@@ -19,10 +19,15 @@ def hello():
             </script>
             <div onclick='send_ajax()' style='width:100px;height:100px;background-color:red'></div>"""
 
+@app.route('/reverse_search', methods=['GET'])
+def reverse_search():
+    skills = request.args['skills'].split("+")
+    print(skills)
+    return "{Devel123: 30%, Devel567: 50%}"
+
 @app.route('/search', methods=['GET'])
 def search():
-    #print(request.args['test'])
-    temp = aggregator.search_in_db(request.args['test'])
+    temp = aggregator.search_in_db(request.args['text'], int(request.args['limit']))
     return temp
     
 if __name__ == '__main__':
