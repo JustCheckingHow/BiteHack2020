@@ -1,343 +1,178 @@
-,tags,Job type,Experience level,Role,Industry,Company size,Company type
-0,"['mysql', 'lamp', 'php']",Full-time,,,,,
-1,"['java', 'php']",Full-time,,,,,
-2,"['c#', '.net', 'asp.net']",Full-time,,,,,
-3,"['javascript', 'reactjs', 'ios']",Full-time,,Mobile Developer,,,
-4,"['java', 'swing', 'javascript', 'hsqldb', 'c++']",Full-time,Mid-Level,,"High-Performance Computing, Simulation Software, Software Development",51–200 people,Private
-5,"['qa', 'testing', 'automated-tests']",Full-time,,QA/Test Developer,"Agile Software Development, Education Technology, Web Technology",501–1k people,Public
-6,"['web-services', 'http']",Full-time,,,"Health Care, Information Technology",10k+ people,Private
-7,"['javascript', 'reactjs', 'node.js']",Full-time,,,,,
-8,"['kubernetes', 'linux', 'devops', 'hadoop', 'cloud']",Internship,Student,DevOps,Information Technology,201–500 people,Private
-9,"['project-management', 'java', 'angularjs']",Full-time,,Product Manager,,,
-10,"['wordpress', 'html5', 'css']",Full-time,,,,,
-11,"['routing', 'firewall', 'networking', 'switching', 'grpc']",Full-time,Mid-Level,System Administrator,Automotive,51–200 people,Private
+,Tags,Job type,Experience level,Role,Industry,Company size,Company type
+3,"['ios', 'reactjs', 'javascript']",Full-time,,Mobile Developer,,,
+5,"['testing', 'qa', 'automated-tests']",Full-time,,QA/Test Developer,"Agile Software Development, Education Technology, Web Technology",501–1k people,Public
+8,"['cloud', 'kubernetes', 'devops', 'linux', 'hadoop']",Internship,Student,DevOps,Information Technology,201–500 people,Private
+9,"['java', 'angularjs', 'project-management']",Full-time,,Product Manager,,,
+11,"['firewall', 'networking', 'routing', 'switching', 'grpc']",Full-time,Mid-Level,System Administrator,Automotive,51–200 people,Private
 12,"['mysql', 'php', 'javascript', 'html']",Full-time,"Mid-Level, Senior",Full Stack Developer,"Agile Software Development, Enterprise Software, Software Development / Engineering",11–50 people,Public
-13,"['vb.net', 'java', 'c#']",Full-time,,,,,
-14,"['ios', 'java', 'android']",Full-time,,"Mobile Developer, Product Manager",,,
-15,"['reactjs', 'c#', 'asp.net']",Full-time,,,,,
-16,"['.net-core', 'c#', '.net', 'azure', 'tdd']",Full-time,"Junior, Mid-Level, Senior",Product Manager,"Information Technology, Software Development",5k–10k people,Private
-17,"['symfony2', 'php', 'angularjs']",Full-time,,,,,
-18,"['reactjs', 'heroku', 'node.js']",Full-time,,,,,
-19,"['javascript', 'salesforce', 'cloud']",Full-time,"Junior, Mid-Level, Senior",Frontend Developer,,,
-20,"['javascript', 'mysql', 'php']",Full-time,,,,,
-21,"['project-management', 'java', 'angularjs']",Full-time,,"Full Stack Developer, Product Manager",,,
-22,"['s4', 'sql', 'database', 'sysadmin', 'cloud']",Full-time,"Student, Junior, Mid-Level",System Administrator,"AI Research, Data & Analytics, Industrial Automation",10k+ people,Public
-23,"['c#', 'gsuite', 'azure', 'rest', 'javascript']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,Education,11–50 people,Private
-24,"['css', 'css3', 'php']",Full-time,,,,,
-25,"['wordpress', 'laravel', 'php']",Full-time,,,,,
+14,"['java', 'ios', 'android']",Full-time,,"Mobile Developer, Product Manager",,,
+16,"['c#', '.net', 'azure', 'tdd', '.net-core']",Full-time,"Junior, Mid-Level, Senior",Product Manager,"Information Technology, Software Development",5k–10k people,Private
+19,"['cloud', 'salesforce', 'javascript']",Full-time,"Junior, Mid-Level, Senior",Frontend Developer,,,
+21,"['java', 'angularjs', 'project-management']",Full-time,,"Full Stack Developer, Product Manager",,,
+22,"['cloud', 'sysadmin', 'database', 's4', 'sql']",Full-time,"Student, Junior, Mid-Level",System Administrator,"AI Research, Data & Analytics, Industrial Automation",10k+ people,Public
+23,"['c#', 'gsuite', 'rest', 'javascript', 'azure']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,Education,11–50 people,Private
 26,"['sql', 'testing', 'php']",Full-time,,QA/Test Developer,,,
-27,"['web-services', 'node.js', 'angularjs']",Full-time,,,,,
-28,"['java', 'android', 'python']",Full-time,,Mobile Developer,,,
+28,"['java', 'python', 'android']",Full-time,,Mobile Developer,,,
 29,"['java', 'android']",Full-time,,Mobile Developer,,,
-30,"['typescript', 'reactjs', 'node.js', 'javascript', 'redux']",Full-time,Senior,,"Agile Software Development, Software Development / Engineering",11–50 people,Private
-31,"['javascript', 'sql', 'linux']",Full-time,"Mid-Level, Senior",Full Stack Developer,"Financial Services, Financial Technology",51–200 people,Private
-32,"['javascript', 'reactjs']",Full-time,,,,,
-33,"['mysql', 'php', 'elasticsearch']",Full-time,,,,,
-34,"['javascript', 'reactjs']",Full-time,,,,,
-35,"['javascript', 'reactjs', 'agile', 'symfony']",Full-time,"Mid-Level, Senior",Frontend Developer,"eCommerce, Price Comparison, Travel & Tourism",51–200 people,VC Funded
+31,"['sql', 'javascript', 'linux']",Full-time,"Mid-Level, Senior",Full Stack Developer,"Financial Services, Financial Technology",51–200 people,Private
+35,"['agile', 'symfony', 'reactjs', 'javascript']",Full-time,"Mid-Level, Senior",Frontend Developer,"eCommerce, Price Comparison, Travel & Tourism",51–200 people,VC Funded
 36,"['qa', 'project-management']",Full-time,,"Product Manager, QA/Test Developer",,,
-37,"['linux', 'tomcat', 'hadoop', 'apache', 'sysadmin', 'ansible']",Full-time,"Mid-Level, Senior",System Administrator,"Ad Tech, Online Media, Performance Marketing",51–200 people,Private
-38,['amazon-web-services'],Full-time,"Lead, Manager",,Financial Technology,201–500 people,Private
-39,['php'],Full-time,,,,,
+37,"['sysadmin', 'apache', 'linux', 'tomcat', 'hadoop', 'ansible']",Full-time,"Mid-Level, Senior",System Administrator,"Ad Tech, Online Media, Performance Marketing",51–200 people,Private
 40,"['java', 'java-ee']",Full-time,"Junior, Mid-Level",Backend Developer,"B2B, Software Development",11–50 people,Private
-41,"['c#', 'ruby', 'python', 'java', 'javascript']",Contract,"Mid-Level, Senior, Lead",,Software Development / Engineering,51–200 people,VC Funded
-42,"['vb.net', 'java', 'c++']",Full-time,,,,,
-43,"['reactjs', 'mysql', 'ruby']",Full-time,,System Administrator,,,
-44,"['laravel', 'php', 'reactjs']",Full-time,,,,,
-45,"['reactjs', 'git', 'android']",Full-time,,Mobile Developer,,,
+43,"['mysql', 'reactjs', 'ruby']",Full-time,,System Administrator,,,
+45,"['android', 'git', 'reactjs']",Full-time,,Mobile Developer,,,
 46,"['web-services', 'design']",Full-time,,System Administrator,,,
-47,"['mysql', 'laravel', 'php']",Full-time,,,,,
-48,"['java', 'kotlin', 'rest', 'android', 'angular']",Full-time,Mid-Level,"Backend Developer, Mobile Developer",,,
-49,"['configurationmanager', 'linux', 'kvm', 'cloud']",Full-time,"Mid-Level, Senior",,"Computer Software, Enterprise Software, OpenStack",1k–5k people,Private
-50,"['c#', 'html', 'java', 'azure', 'css']",Full-time,Senior,,,,
-51,['scala'],Full-time,,,"Health Care, Information Technology",10k+ people,Private
-52,"['sql', 'sql-server']",Full-time,,,,,
-53,"['typescript', 'angularjs', 'html', 'javascript', 'css']",Internship,Student,Frontend Developer,"SaaS, Software Development",11–50 people,Private
-54,"['vb.net', 'java', 'c#']",Full-time,,,,,
+48,"['android', 'kotlin', 'rest', 'angular', 'java']",Full-time,Mid-Level,"Backend Developer, Mobile Developer",,,
+53,"['typescript', 'css', 'html', 'javascript', 'angularjs']",Internship,Student,Frontend Developer,"SaaS, Software Development",11–50 people,Private
 55,"['java', 'java-ee', 'spring']",Full-time,,Backend Developer,,,
-56,"['testing', 'agile', 'automated-tests']",Full-time,,QA/Test Developer,Telecommunications,10k+ people,Public
-57,"['azure', 'asp.net-web-api', 'windows']",Full-time,,,,,
-58,"['javascript', 'sql']",Full-time,,,,,
-59,"['linux', 'python', 'security', 'r', 'postfix']",Full-time,"Mid-Level, Senior","Backend Developer, DevOps",Cybersecurity,51–200 people,Private
-60,"['mysql', 'php', 'javascript']",Full-time,,,,,
-61,"['php', 'html', 'drupal', 'javascript', 'css']",Full-time,Mid-Level,Full Stack Developer,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-62,"['ios', 'reactjs', 'android']",Full-time,,Mobile Developer,,,
-63,"['linux', 'c', 'embedded-linux', 'c++', 'linux-kernel']",Full-time,"Mid-Level, Senior",Embedded Developer,"Agile Software Development, Autonomous Driving, Data & Analytics",10k+ people,Private
-64,"['ios', 'objective-c', 'android']",Full-time,,"Full Stack Developer, Mobile Developer",,,
-65,"['mobile', 'java', 'android']",Full-time,,"Backend Developer, Mobile Developer",,,
-66,"['jquery', 'user-interface']",Full-time,,Frontend Developer,,,
-67,"['visual-studio', 'qt', 'python', 'git', 'c++']",Full-time,Senior,,"Automotive, Computer Graphics, Project Management",11–50 people,Private
-68,"['qa', 'testing', 'project-management']",Full-time,,"Product Manager, QA/Test Developer",,,
-69,"['reactjs', 'html5', 'javascript', 'css', 'angular']",Full-time,"Mid-Level, Senior",Frontend Developer,"Agile Software Development, Automotive, Software Development",201–500 people,Public
-70,"['java', 'c#', 'c++', 'python']",Full-time,"Junior, Mid-Level",Backend Developer,"Agile Software Development, Computer Software, CPQ (Configure,  Price,  Quote)",51–200 people,Private
-71,"['sql', 'web-services', 'amazon-web-services']",Full-time,,,,,
-72,['java'],Full-time,,,,,
-73,"['postgresql', 'sysadmin', 'ruby', 'python']",Full-time,Senior,DevOps,"eCommerce, Food & Beverage, Logistics & Distribution",5k–10k people,Public
-74,"['postgresql', 'ruby-on-rails', 'ruby']",Full-time,,,,,
-75,"['javascript', 'reactjs', 'redux']",Full-time,Manager,Frontend Developer,"Health Care, Insurance, Web Technology",1k–5k people,VC Funded
-76,['java'],Full-time,,,,,
-77,"['node.js', 'c#', 'python']",Full-time,,,,,
-78,"['salesforce', 'apex', 'github', 'salesforce-lightning']",Full-time,Senior,,"Financial Technology, FinTech, Platforms",501–1k people,Public
-79,"['symfony2', 'mysql', 'php']",Full-time,,,,,
-80,"['asp.net-web-api', 'c#', 'asp.net']",Full-time,,,,,
-81,"['sql', 'javascript', 'angularjs']",Full-time,,Full Stack Developer,,,
+56,"['agile', 'testing', 'automated-tests']",Full-time,,QA/Test Developer,Telecommunications,10k+ people,Public
+59,"['linux', 'postfix', 'security', 'r', 'python']",Full-time,"Mid-Level, Senior","Backend Developer, DevOps",Cybersecurity,51–200 people,Private
+61,"['css', 'html', 'javascript', 'drupal', 'php']",Full-time,Mid-Level,Full Stack Developer,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+62,"['android', 'ios', 'reactjs']",Full-time,,Mobile Developer,,,
+63,"['linux-kernel', 'c', 'c++', 'linux', 'embedded-linux']",Full-time,"Mid-Level, Senior",Embedded Developer,"Agile Software Development, Autonomous Driving, Data & Analytics",10k+ people,Private
+64,"['android', 'ios', 'objective-c']",Full-time,,"Full Stack Developer, Mobile Developer",,,
+65,"['android', 'java', 'mobile']",Full-time,,"Backend Developer, Mobile Developer",,,
+66,"['user-interface', 'jquery']",Full-time,,Frontend Developer,,,
+68,"['testing', 'qa', 'project-management']",Full-time,,"Product Manager, QA/Test Developer",,,
+69,"['html5', 'reactjs', 'css', 'javascript', 'angular']",Full-time,"Mid-Level, Senior",Frontend Developer,"Agile Software Development, Automotive, Software Development",201–500 people,Public
+70,"['java', 'c#', 'python', 'c++']",Full-time,"Junior, Mid-Level",Backend Developer,"Agile Software Development, Computer Software, CPQ (Configure,  Price,  Quote)",51–200 people,Private
+73,"['postgresql', 'python', 'sysadmin', 'ruby']",Full-time,Senior,DevOps,"eCommerce, Food & Beverage, Logistics & Distribution",5k–10k people,Public
+75,"['redux', 'reactjs', 'javascript']",Full-time,Manager,Frontend Developer,"Health Care, Insurance, Web Technology",1k–5k people,VC Funded
+81,"['sql', 'angularjs', 'javascript']",Full-time,,Full Stack Developer,,,
 82,"['testing', 'php', 'automated-tests']",Full-time,,QA/Test Developer,,,
-83,"['ios', 'objective-c', 'swift']",Full-time,,Mobile Developer,,,
-84,"['wordpress', 'php', 'c++']",Full-time,,,,,
-85,"['mysql', 'lamp', 'php']",Full-time,,,,,
-86,"['sql', 'sysadmin', 'mongodb']",Full-time,,System Administrator,,,
-87,"['asp.net-mvc', 'c#', 'model-view-controller']",Full-time,,,,,
-88,"['mobile', 'java', 'kotlin', 'android']",Full-time,"Mid-Level, Senior",Mobile Developer,"Finance, Financial Technology",1k–5k people,
-89,['.net'],Full-time,,,,,
-90,"['sql', 'etl', 'python']",Full-time,"Senior, Lead",Backend Developer,"Finance, Financial Technology, Information Technology",201–500 people,Private
-91,"['javascript', 'reactjs', 'redux', 'react-native']",Full-time,"Mid-Level, Senior","Frontend Developer, Full Stack Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
-92,"['python', 'azure-functions', 'node.js', 'serverless', 'aws-lambda']",Full-time,"Senior, Lead",,"Cybersecurity, Enterprise Software, Security Software",51–200 people,VC Funded
-93,"['hibernate', 'java', 'intellij-idea', 'spring', 'infinispan']",Full-time,"Mid-Level, Senior, Lead","Backend Developer, Full Stack Developer","eCommerce, Software Development, Web Development",11–50 people,Private
-94,"['css3', 'css', 'html']",Full-time,,,,,
-95,"['javascript', 'html5', 'php']",Full-time,,,,,
-96,"['java', 'java-ee', 'spring']",Full-time,"Mid-Level, Senior",,"B2B, Software Development",11–50 people,Private
-97,"['cocoa', 'java', 'objective-c']",Full-time,,Mobile Developer,,,
-98,"['javascript', 'lamp', 'php']",Full-time,,,,,
-99,"['javascript', 'reactjs', 'angularjs']",Full-time,,,,,
-100,"['api', 'maven', 'amazon-web-services', 'bamboo', 'jenkins']",Full-time,"Senior, Lead",DevOps,"Construction, Digital Marketing",10k+ people,Private
-101,"['jira', 'sql', 'oracle', 'scrum', 'confluence']",Full-time,"Mid-Level, Senior",,"IT Consulting, IT Recruitment, Software Consulting",11–50 people,Private
-102,"['wordpress', 'mysql', 'php']",Full-time,,,,,
-103,"['reactjs', 'ruby-on-rails', 'html']",Full-time,,Frontend Developer,,,
-104,"['clojure', 'data-modeling', 'sql', 'sas', 'algorithm']",Full-time,Senior,"Backend Developer, Database Administrator","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-105,"['css', 'php', 'html']",Full-time,,,,,
-106,"['sql', 'java']",Full-time,,,,,
-107,"['hibernate', 'java', 'multithreading', 'spring']",Full-time,Mid-Level,Full Stack Developer,Financial Services,10k+ people,Public
-108,"['asp.net-mvc', 'c#', '.net']",Full-time,,,,,
-109,"['lamp', 'php', 'ruby']",Full-time,,,,,
-110,"['php', 'html', 'javascript', 'tdd', 'css']",Full-time,"Junior, Mid-Level",,"Broadcast, Digital Media, Entertainment",10k+ people,Public
-111,"['java', 'html5', 'intellij-idea', 'spring', 'javascript']",Full-time,"Mid-Level, Senior, Lead","Backend Developer, Full Stack Developer","eCommerce, Software Development, Web Development",11–50 people,Private
-112,"['c#', 'maven', 'testing', 'java', 'jdbc']",Full-time,"Mid-Level, Senior, Lead","DevOps, QA/Test Developer","Information Technology, Software Development",5k–10k people,Private
-113,"['qa', 'testing']",Full-time,,QA/Test Developer,,,
-114,"['mysql', 'laravel', 'php']",Full-time,,,,,
-115,"['mysql', 'laravel', 'php']",Full-time,,,,,
+83,"['ios', 'swift', 'objective-c']",Full-time,,Mobile Developer,,,
+86,"['sysadmin', 'mongodb', 'sql']",Full-time,,System Administrator,,,
+88,"['android', 'java', 'kotlin', 'mobile']",Full-time,"Mid-Level, Senior",Mobile Developer,"Finance, Financial Technology",1k–5k people,
+90,"['etl', 'sql', 'python']",Full-time,"Senior, Lead",Backend Developer,"Finance, Financial Technology, Information Technology",201–500 people,Private
+91,"['redux', 'react-native', 'reactjs', 'javascript']",Full-time,"Mid-Level, Senior","Frontend Developer, Full Stack Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
+93,"['infinispan', 'java', 'intellij-idea', 'hibernate', 'spring']",Full-time,"Mid-Level, Senior, Lead","Backend Developer, Full Stack Developer","eCommerce, Software Development, Web Development",11–50 people,Private
+97,"['java', 'objective-c', 'cocoa']",Full-time,,Mobile Developer,,,
+100,"['api', 'jenkins', 'maven', 'bamboo', 'amazon-web-services']",Full-time,"Senior, Lead",DevOps,"Construction, Digital Marketing",10k+ people,Private
+103,"['html', 'reactjs', 'ruby-on-rails']",Full-time,,Frontend Developer,,,
+104,"['algorithm', 'sas', 'data-modeling', 'clojure', 'sql']",Full-time,Senior,"Backend Developer, Database Administrator","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+107,"['java', 'spring', 'hibernate', 'multithreading']",Full-time,Mid-Level,Full Stack Developer,Financial Services,10k+ people,Public
+111,"['html5', 'javascript', 'java', 'intellij-idea', 'spring']",Full-time,"Mid-Level, Senior, Lead","Backend Developer, Full Stack Developer","eCommerce, Software Development, Web Development",11–50 people,Private
+112,"['c#', 'testing', 'java', 'jdbc', 'maven']",Full-time,"Mid-Level, Senior, Lead","DevOps, QA/Test Developer","Information Technology, Software Development",5k–10k people,Private
+113,"['testing', 'qa']",Full-time,,QA/Test Developer,,,
 116,['computer-science'],Full-time,Mid-Level,Full Stack Developer,"Ad Tech, Marketplace, Platforms",1k–5k people,Public
-117,"['embedded', 'linux', 'emv', 'c', 'payment-processing']",Full-time,"Mid-Level, Senior",Embedded Developer,"Finance, Financial Technology",1k–5k people,
-118,"['java', 'html5', 'android', 'javascript', 'css3']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
-119,"['automated-tests', 'c#', 'css', 'c']",Full-time,,,,,
-120,"['wordpress', 'mysql', 'php']",Full-time,,,,,
+117,"['c', 'linux', 'emv', 'embedded', 'payment-processing']",Full-time,"Mid-Level, Senior",Embedded Developer,"Finance, Financial Technology",1k–5k people,
+118,"['android', 'html5', 'css3', 'javascript', 'java']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
 121,"['c#', '.net', 'tsql', 'design-patterns', 'architecture']",Full-time,Senior,Backend Developer,"Agile Software Development, Software Development / Engineering, Sports",51–200 people,Private
-122,"['javascript', 'java']",Full-time,,,,,
-123,['java'],Full-time,,,,,
-124,"['java', 'android', 'angularjs']",Full-time,,Mobile Developer,,,
-125,"['sql', 'c#', '.net']",Full-time,,,,,
+124,"['android', 'java', 'angularjs']",Full-time,,Mobile Developer,,,
 126,"['reactjs', 'objective-c', 'c++']",Full-time,,Mobile Developer,,,
-127,"['ios', 'mobile', 'android']",Full-time,,Mobile Developer,,,
-128,"['html5', 'user-interface', 'css3']",Full-time,,,,,
-129,"['devops', 'amazon-web-services', 'azure', 'continuous-integration', 'continuous-delivery']",Full-time,"Mid-Level, Senior",DevOps,"DevOps, Enterprise Software, Web Development",51–200 people,Private
-130,"['project-management', 'linux', 'node.js']",Full-time,,System Administrator,"DevOps, Internet of Things, Software Development",51–200 people,VC Funded
-131,"['wordpress', 'css', 'php']",Full-time,,,,,
-132,"['mysql', 'php', 'javascript']",Full-time,,,,,
-133,"['javascript', 'mysql', 'php']",Full-time,,,,,
-134,"['hana', 'abap', 'sapbw']",Full-time,Senior,,"Logistics & Distribution, Retail",10k+ people,Private
-135,"['c#', '.net', 'asp.net']",Full-time,,,,,
+127,"['android', 'ios', 'mobile']",Full-time,,Mobile Developer,,,
+129,"['devops', 'azure', 'continuous-delivery', 'continuous-integration', 'amazon-web-services']",Full-time,"Mid-Level, Senior",DevOps,"DevOps, Enterprise Software, Web Development",51–200 people,Private
+130,"['node.js', 'linux', 'project-management']",Full-time,,System Administrator,"DevOps, Internet of Things, Software Development",51–200 people,VC Funded
 136,"['java', 'mongodb']",Full-time,Mid-Level,Backend Developer,"Aviation, Electronics, Information Technology",1k–5k people,Private
-137,"['python', 'web-services', 'rest', 'api', 'graphql']",Full-time,"Junior, Mid-Level",Backend Developer,"AI Research, SaaS, Software Development",501–1k people,Private
-138,"['lamp', 'go', 'ruby']",Full-time,,,,,
-139,"['c#', '.net', 'sql', 'mongodb', 'angular']",Full-time,Senior,,"Benefit Administration, SaaS, Software Development",501–1k people,Private
-140,"['nlp', 'python']",Full-time,"Junior, Mid-Level",Backend Developer,,,
-141,"['project-management', 'design']",Full-time,,Product Manager,"Health Care, Information Technology",10k+ people,Private
-142,"['javascript', 'reactjs', 'php']",Full-time,,,,,
-143,"['c#', '.net', 'c++']",Full-time,,,,,
-144,"['mobile', 'java', 'android']",Full-time,,Mobile Developer,,,
-145,"['sql', 'python']",Full-time,,Data Scientist,,,
-146,"['tensorflow', 'python', 'opencv', 'machine-learning', 'computer-vision']",Full-time,Senior,,"Defense, Drones, Hardware",11–50 people,VC Funded
-147,"['monitoring', 'prediction', 'logging']",Full-time,Mid-Level,,,,
-148,"['web-services', 'automation', 'google-cloud-platform', 'cloud']",Full-time,,,"Health Care, Information Technology",10k+ people,Private
-149,"['mobile', 'java', 'android']",Full-time,,Mobile Developer,,,
-150,"['json', 'python', 'xml', 'cisco', 'web-services', 'sysadmin']",Full-time,"Mid-Level, Senior",System Administrator,Financial Services,10k+ people,Public
-151,"['kubernetes', 'python', 'docker', 'go', 'google-cloud-platform']",Full-time,Senior,Product Manager,"Artificial Intelligence, Cloud Services, Enterprise Software",11–50 people,Private
-152,['java'],Full-time,,,,,
-153,"['machine-learning', 'java', 'artificial-intelligence', 'python']",Full-time,Mid-Level,"Backend Developer, Data Scientist","Academic Research, Data & Analytics, Education",201–500 people,Public
-154,"['java', 'java-ee']",Full-time,,,,,
-155,"['mysql', 'php', 'android']",Full-time,,Mobile Developer,,,
-156,"['python', 'web-services', 'design', 'c++', 'cloud']",Full-time,Mid-Level,DevOps,"Electronics, Information Technology, Software Development / Engineering",1k–5k people,Public
-157,"['mysql', 'php', 'javascript']",Full-time,,,,,
-158,"['amazon-web-services', 'azure', 'web-services']",Full-time,,,,,
-159,"['mobile', 'java', 'android']",Full-time,,Mobile Developer,,,
+137,"['rest', 'api', 'web-services', 'python', 'graphql']",Full-time,"Junior, Mid-Level",Backend Developer,"AI Research, SaaS, Software Development",501–1k people,Private
+140,"['python', 'nlp']",Full-time,"Junior, Mid-Level",Backend Developer,,,
+141,"['design', 'project-management']",Full-time,,Product Manager,"Health Care, Information Technology",10k+ people,Private
+144,"['android', 'java', 'mobile']",Full-time,,Mobile Developer,,,
+145,"['python', 'sql']",Full-time,,Data Scientist,,,
+149,"['android', 'java', 'mobile']",Full-time,,Mobile Developer,,,
+150,"['sysadmin', 'cisco', 'web-services', 'xml', 'json', 'python']",Full-time,"Mid-Level, Senior",System Administrator,Financial Services,10k+ people,Public
+151,"['kubernetes', 'docker', 'go', 'google-cloud-platform', 'python']",Full-time,Senior,Product Manager,"Artificial Intelligence, Cloud Services, Enterprise Software",11–50 people,Private
+153,"['java', 'machine-learning', 'python', 'artificial-intelligence']",Full-time,Mid-Level,"Backend Developer, Data Scientist","Academic Research, Data & Analytics, Education",201–500 people,Public
+155,"['mysql', 'android', 'php']",Full-time,,Mobile Developer,,,
+156,"['cloud', 'design', 'c++', 'web-services', 'python']",Full-time,Mid-Level,DevOps,"Electronics, Information Technology, Software Development / Engineering",1k–5k people,Public
+159,"['android', 'java', 'mobile']",Full-time,,Mobile Developer,,,
 160,"['testing', 'design']",Full-time,Mid-Level,"Product Manager, QA/Test Developer",,,
-161,"['reactjs', 'html5', 'javascript', 'node.js', 'angular']",Full-time,"Mid-Level, Senior","Frontend Developer, Full Stack Developer","Data & Analytics, Sports Data, Sports Technology",51–200 people,Private
-162,"['postgresql', 'java', 'docker', 'kotlin']",Full-time,Senior,Backend Developer,"Cloud Services, Green Energy, Software Development / Engineering",11–50 people,Private
-163,"['wordpress', 'php', 'html']",Full-time,,,,,
-164,"['c++', 'c', 'python']",Full-time,,,,,
-165,"['azure', 'asp.net-web-api', 'c#', 'continuous-integration']",Full-time,"Mid-Level, Senior",DevOps,Health Care,11–50 people,Private
-166,"['ios', 'c++', 'android']",Full-time,,"Graphics/Game Developer, Mobile Developer",,,
-167,"['mysql', 'laravel', 'php']",Full-time,,,,,
+161,"['html5', 'reactjs', 'javascript', 'angular', 'node.js']",Full-time,"Mid-Level, Senior","Frontend Developer, Full Stack Developer","Data & Analytics, Sports Data, Sports Technology",51–200 people,Private
+162,"['java', 'docker', 'postgresql', 'kotlin']",Full-time,Senior,Backend Developer,"Cloud Services, Green Energy, Software Development / Engineering",11–50 people,Private
+165,"['asp.net-web-api', 'c#', 'continuous-integration', 'azure']",Full-time,"Mid-Level, Senior",DevOps,Health Care,11–50 people,Private
+166,"['android', 'ios', 'c++']",Full-time,,"Graphics/Game Developer, Mobile Developer",,,
 168,"['sql', 'testing', 'php']",Full-time,,QA/Test Developer,,,
-169,"['web-services', 'design', 'cloud']",Full-time,,,,,
-170,['.net'],Full-time,,,,,
-171,"['java-ee', 'java', 'oop', 'spring', 'design-patterns']",Full-time,"Junior, Mid-Level, Senior",,,,
-172,"['ios', 'reactjs', 'node.js']",Full-time,,Mobile Developer,,,
-173,"['ios', 'java', 'android', 'api', 'architecture']",Full-time,"Senior, Lead","Backend Developer, Frontend Developer, Mobile Developer",Software Development / Engineering,11–50 people,Private
-174,"['typescript', 'unit-testing', 'continuous-integration', 'node.js', 'javascript']",Full-time,Senior,Backend Developer,"Logistics & Distribution, Retail",10k+ people,Private
-175,"['kubernetes', 'c#', 'docker', 'nexus', 'bitbucket']",Full-time,"Mid-Level, Senior",DevOps,"Agile Software Development, Software Development / Engineering, Sports",51–200 people,Private
-176,"['wordpress', 'mysql', 'php']",Full-time,,,,,
-177,"['rtos', 'python', 'c', 'embedded', 'c++']",Full-time,Senior,Embedded Developer,"Defense, Drones, Hardware",11–50 people,VC Funded
-178,"['postgresql', 'mysql', 'oracle']",Full-time,,Database Administrator,,,
-179,['php'],Full-time,,,,,
-180,"['sql', 'php', 'node.js']",Full-time,,,,,
-181,"['c#', 'typescript', 'azure-devops', 'azure', 'asp.net-core']",Full-time,"Mid-Level, Senior",Full Stack Developer,,,
-182,"['mysql', 'php', 'html']",Full-time,,,,,
-183,"['reactjs', 'continuous-integration', 'microservices', 'node.js']",Full-time,Senior,Full Stack Developer,"mobility, Software Development",51–200 people,VC Funded
+172,"['node.js', 'ios', 'reactjs']",Full-time,,Mobile Developer,,,
+173,"['android', 'api', 'ios', 'architecture', 'java']",Full-time,"Senior, Lead","Backend Developer, Frontend Developer, Mobile Developer",Software Development / Engineering,11–50 people,Private
+174,"['typescript', 'unit-testing', 'javascript', 'node.js', 'continuous-integration']",Full-time,Senior,Backend Developer,"Logistics & Distribution, Retail",10k+ people,Private
+175,"['c#', 'kubernetes', 'docker', 'nexus', 'bitbucket']",Full-time,"Mid-Level, Senior",DevOps,"Agile Software Development, Software Development / Engineering, Sports",51–200 people,Private
+177,"['c', 'c++', 'embedded', 'python', 'rtos']",Full-time,Senior,Embedded Developer,"Defense, Drones, Hardware",11–50 people,VC Funded
+178,"['oracle', 'mysql', 'postgresql']",Full-time,,Database Administrator,,,
+181,"['c#', 'typescript', 'asp.net-core', 'azure', 'azure-devops']",Full-time,"Mid-Level, Senior",Full Stack Developer,,,
+183,"['node.js', 'reactjs', 'continuous-integration', 'microservices']",Full-time,Senior,Full Stack Developer,"mobility, Software Development",51–200 people,VC Funded
 184,"['java-ee', '.net', 'testing', 'java', 'mongodb']",Full-time,"Mid-Level, Senior",QA/Test Developer,"Information Technology, Software Development",5k–10k people,Private
-185,"['java', 'html5', 'android', 'javascript', 'css3']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
-186,"['java', 'mssql', 'ejb', 'linux']",Full-time,Mid-Level,Backend Developer,"Financial Services, Insurance",1k–5k people,Public
-187,"['qa', 'testing', 'automated-tests']",Full-time,,QA/Test Developer,"Agile Software Development, Education Technology, Web Technology",501–1k people,Public
-188,"['sap', 'java', 'crm', 'abap', 'c++']",Full-time,"Junior, Mid-Level, Senior",,"Agile Software Development, Computer Software, IT Consulting",501–1k people,Public
-189,"['vb.net', 'c#', '.net']",Full-time,,,,,
-190,"['javascript', 'reactjs', 'react-native']",Full-time,"Mid-Level, Senior",Frontend Developer,"Cloud Services, Green Energy, Software Development / Engineering",11–50 people,Private
-191,['php'],Full-time,,,,,
-192,"['ruby-on-rails', 'jquery', 'ruby']",Full-time,,Frontend Developer,,,
-193,"['symfony2', 'php']",Full-time,,Backend Developer,,,
-194,"['amazon-web-services', 'docker', 'ansible']",Full-time,,DevOps,,,
-195,"['python', 'amazon-web-services', 'docker', 'machine-learning', 'c++']",Full-time,Senior,,"Defense, Drones, Hardware",11–50 people,VC Funded
-196,['java'],Full-time,,,,,
-197,['php'],Full-time,,,,,
-198,"['magento', 'php', 'shopware', 'java', 'hybris']",Full-time,"Mid-Level, Senior",Backend Developer,Digital Agency,201–500 people,Private
-199,"['wordpress', 'php', 'android']",Full-time,,Mobile Developer,,,
+185,"['android', 'html5', 'css3', 'javascript', 'java']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
+186,"['java', 'ejb', 'mssql', 'linux']",Full-time,Mid-Level,Backend Developer,"Financial Services, Insurance",1k–5k people,Public
+187,"['testing', 'qa', 'automated-tests']",Full-time,,QA/Test Developer,"Agile Software Development, Education Technology, Web Technology",501–1k people,Public
+190,"['react-native', 'reactjs', 'javascript']",Full-time,"Mid-Level, Senior",Frontend Developer,"Cloud Services, Green Energy, Software Development / Engineering",11–50 people,Private
+192,"['jquery', 'ruby', 'ruby-on-rails']",Full-time,,Frontend Developer,,,
+193,"['php', 'symfony2']",Full-time,,Backend Developer,,,
+194,"['docker', 'ansible', 'amazon-web-services']",Full-time,,DevOps,,,
+198,"['shopware', 'magento', 'java', 'hybris', 'php']",Full-time,"Mid-Level, Senior",Backend Developer,Digital Agency,201–500 people,Private
+199,"['android', 'wordpress', 'php']",Full-time,,Mobile Developer,,,
 200,"['laravel', 'php', 'rest']",Full-time,,Backend Developer,,,
-201,"['ios', 'mobile', 'json', 'java', 'android']",Full-time,"Mid-Level, Senior",Mobile Developer,"eCommerce, Software Development, Web Development",11–50 people,Private
-202,"['unit-testing', 'amazon-web-services', 'java', 'microservices', 'continuous-deployment']",Full-time,Senior,,"Logistics & Distribution, Retail",10k+ people,Private
-203,"['postgresql', 'php', 'ruby']",Full-time,,,,,
-204,"['javascript', 'reactjs', 'redux', 'react-native']",Full-time,Manager,"Frontend Developer, Mobile Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
-205,"['javascript', 'reactjs', 'php']",Full-time,,,,,
-206,"['reactjs', 'node.js', 'javascript', 'git', 'jestjs']",Contract,Senior,,"Software Consulting, Software Development / Engineering, Web Technology",51–200 people,Private
-207,"['javascript', 'css', 'php']",Full-time,,Frontend Developer,,,
-208,"['javascript', 'design', 'cloud']",Full-time,,,,,
-209,"['java', 'scala']",Full-time,,,,,
-210,"['c#', 'ruby', 'python', 'java', 'javascript']",Contract,"Mid-Level, Senior, Lead",,Software Development / Engineering,51–200 people,VC Funded
+201,"['android', 'ios', 'java', 'json', 'mobile']",Full-time,"Mid-Level, Senior",Mobile Developer,"eCommerce, Software Development, Web Development",11–50 people,Private
+204,"['redux', 'react-native', 'reactjs', 'javascript']",Full-time,Manager,"Frontend Developer, Mobile Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
+207,"['php', 'javascript', 'css']",Full-time,,Frontend Developer,,,
 211,"['apache', 'css', 'html']",Full-time,,System Administrator,,,
-212,"['sap', 'hana', 'pos', 'abap']",Full-time,Mid-Level,,"Logistics & Distribution, Retail",10k+ people,Private
-213,"['ios', 'objective-c', 'swift']",Full-time,,Mobile Developer,,,
-214,['sql'],Full-time,,,,,
-215,"['linux', 'sas', 'redhat', 'vmware', 'sysadmin']",Full-time,Mid-Level,System Administrator,Financial Services,10k+ people,Public
+213,"['ios', 'swift', 'objective-c']",Full-time,,Mobile Developer,,,
+215,"['redhat', 'sas', 'sysadmin', 'linux', 'vmware']",Full-time,Mid-Level,System Administrator,Financial Services,10k+ people,Public
 216,"['java', 'java-ee', 'spring']",Full-time,,Full Stack Developer,,,
 217,"['ios', 'iphone', 'objective-c']",Full-time,,Mobile Developer,"Agile Software Development, Education Technology, Web Technology",501–1k people,Public
-218,"['c#', 'oop', '.net']",Full-time,,,,,
-219,"['ruby-on-rails', 'c#']",Full-time,,,,,
-220,"['wordpress', 'php', 'javascript']",Full-time,,,,,
-221,"['wordpress', 'php', 'clojure']",Full-time,,,,,
-222,"['sql', 'project-management', 'etl']",Full-time,,"Database Administrator, Product Manager",,,
-223,"['web-services', 'design', 'http']",Full-time,,,"Health Care, Information Technology",10k+ people,Private
-224,"['mysql', 'php', 'javascript']",Full-time,,,,,
+222,"['etl', 'sql', 'project-management']",Full-time,,"Database Administrator, Product Manager",,,
 225,['reactjs'],Full-time,,Frontend Developer,,,
-226,['cloud'],Full-time,,,,,
-227,"['mobile', 'xamarin', 'c#']",Full-time,,Mobile Developer,,,
-228,"['javascript', 'reactjs', 'redux', 'react-native']",Full-time,"Mid-Level, Senior",Frontend Developer,"Health Care, Insurance, Web Technology",1k–5k people,VC Funded
+227,"['c#', 'xamarin', 'mobile']",Full-time,,Mobile Developer,,,
+228,"['reactjs', 'react-native', 'javascript', 'redux']",Full-time,"Mid-Level, Senior",Frontend Developer,"Health Care, Insurance, Web Technology",1k–5k people,VC Funded
 229,['angularjs'],Full-time,,Frontend Developer,,,
-230,"['laravel', 'jquery', 'php']",Full-time,,Frontend Developer,,,
-231,"['javascript', 'html5', 'jquery']",Full-time,,Frontend Developer,,,
-232,"['java', 'java-ee']",Full-time,,,,,
-233,"['mysql', 'php', 'python']",Full-time,,,,,
-234,"['ios', 'mobile', 'android']",Full-time,Mid-Level,Mobile Developer,"Electronics, Information Technology, Software Development / Engineering",1k–5k people,Public
-235,"['wordpress', 'php']",Full-time,,,,,
-236,"['osx', 'project-management', 'zos', 'db2']",Full-time,"Mid-Level, Senior",Product Manager,Financial Services,10k+ people,Public
-237,"['symfony2', 'php', 'wordpress']",Full-time,,,,,
-238,"['java', 'deep-learning', 'machine-learning', 'artificial-intelligence', 'kaldi']",Full-time,"Senior, Lead, Manager",Data Scientist,Software Development / Engineering,11–50 people,Private
-239,"['vb.net', 'c#', 'sql-server']",Full-time,,,,,
-240,"['wordpress', 'php']",Full-time,,,,,
-241,"['mobile', 'java', 'android']",Full-time,,Mobile Developer,,,
-242,"['embedded', 'c++', 'c']",Full-time,,Embedded Developer,,,
-243,"['c#', 'sql-server', 'asp.net', 'asp.net-mvc', '.net-core']",Full-time,"Senior, Lead",Full Stack Developer,Financial Services,201–500 people,Private
-244,['http'],Full-time,,,"Health Care, Information Technology",10k+ people,Private
-245,"['wordpress', 'php', 'html']",Full-time,,,,,
-246,"['embedded', 'linux-kernel', 'linux', 'c']",Full-time,,Embedded Developer,"Embedded, Software Development, Web Technology",201–500 people,Private
-247,"['mobile', 'java', 'php']",Full-time,,Mobile Developer,,,
-248,"['reactjs', 'flask', 'python']",Full-time,,,,,
-249,"['spring-mvc', 'java', 'spring']",Full-time,,,,,
-250,"['clojure', 'sql', 'azure', 'hadoop', 'apache']",Full-time,"Mid-Level, Senior",Backend Developer,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-251,['php'],Full-time,,,,,
-252,"['sql', 'linux', 'python']",Full-time,,,,,
-253,"['sql', 'apache', 'hadoop', 'r', 'apache-spark']",Full-time,Senior,Data Scientist,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-254,"['soa', 'java', 'microservices', 'spring', 'architecture']",Full-time,Manager,,"Enterprise Software, Information Services, Information Technology",501–1k people,Private
-255,"['ios', 'nosql', 'android']",Full-time,,Mobile Developer,,,
+230,"['laravel', 'php', 'jquery']",Full-time,,Frontend Developer,,,
+231,"['html5', 'jquery', 'javascript']",Full-time,,Frontend Developer,,,
+234,"['android', 'ios', 'mobile']",Full-time,Mid-Level,Mobile Developer,"Electronics, Information Technology, Software Development / Engineering",1k–5k people,Public
+236,"['osx', 'zos', 'db2', 'project-management']",Full-time,"Mid-Level, Senior",Product Manager,Financial Services,10k+ people,Public
+238,"['machine-learning', 'deep-learning', 'kaldi', 'java', 'artificial-intelligence']",Full-time,"Senior, Lead, Manager",Data Scientist,Software Development / Engineering,11–50 people,Private
+241,"['android', 'java', 'mobile']",Full-time,,Mobile Developer,,,
+242,"['embedded', 'c', 'c++']",Full-time,,Embedded Developer,,,
+243,"['c#', 'asp.net', 'asp.net-mvc', 'sql-server', '.net-core']",Full-time,"Senior, Lead",Full Stack Developer,Financial Services,201–500 people,Private
+246,"['embedded', 'linux-kernel', 'c', 'linux']",Full-time,,Embedded Developer,"Embedded, Software Development, Web Technology",201–500 people,Private
+247,"['java', 'php', 'mobile']",Full-time,,Mobile Developer,,,
+250,"['apache', 'azure', 'clojure', 'hadoop', 'sql']",Full-time,"Mid-Level, Senior",Backend Developer,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+253,"['apache', 'apache-spark', 'hadoop', 'r', 'sql']",Full-time,Senior,Data Scientist,"Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+255,"['android', 'ios', 'nosql']",Full-time,,Mobile Developer,,,
 256,"['mysql', 'jquery', 'php']",Full-time,,Frontend Developer,,,
-257,"['android', 'linux', 'c']",Full-time,,Mobile Developer,,,
-258,"['c#-4.0', 'c#', 'php']",Full-time,,,,,
-259,"['c#', '.net']",Full-time,,,,,
-260,"['java', 'angularjs', 'python']",Full-time,,,,,
-261,"['mysql', 'php', 'wordpress']",Full-time,,,,,
-262,"['java', 'php']",Full-time,,,,,
-263,"['.net-core', 'c#', '.net', 'docker']",Full-time,"Senior, Lead",Full Stack Developer,"Agile Software Development, Digital Health, Healthcare",11–50 people,VC Funded
-264,"['amazon-web-services', 'clojure', 'user-experience']",Full-time,,"Designer, Product Manager","Agile Software Development, Education Technology, Web Technology",501–1k people,Public
-265,"['c#', '.net', 'sql-server']",Full-time,,,,,
-266,"['ruby-on-rails', 'mysql', 'ruby']",Full-time,,,,,
-267,"['sql', 'java', 'android']",Full-time,,Mobile Developer,,,
-268,"['c#', 'ruby', 'python', 'java', 'javascript']",Contract,"Mid-Level, Senior, Lead",,Software Development / Engineering,51–200 people,VC Funded
-269,"['javascript', 'reactjs', 'css']",Full-time,,,,,
-270,"['java', 'java-ee']",Full-time,,,,,
-271,"['bootstrap', 'twitter-bootstrap', 'html']",Full-time,,Designer,,,
+257,"['android', 'c', 'linux']",Full-time,,Mobile Developer,,,
+263,"['c#', '.net-core', 'docker', '.net']",Full-time,"Senior, Lead",Full Stack Developer,"Agile Software Development, Digital Health, Healthcare",11–50 people,VC Funded
+264,"['user-experience', 'clojure', 'amazon-web-services']",Full-time,,"Designer, Product Manager","Agile Software Development, Education Technology, Web Technology",501–1k people,Public
+267,"['android', 'java', 'sql']",Full-time,,Mobile Developer,,,
+271,"['html', 'bootstrap', 'twitter-bootstrap']",Full-time,,Designer,,,
 272,"['model-view-controller', 'php', 'rest']",Full-time,,Backend Developer,,,
-273,"['testing', 'vbscript', 'automation', 'qa', 'qtp']",Full-time,"Junior, Mid-Level",QA/Test Developer,Financial Services,10k+ people,Public
-274,"['apache-spark', 'java', 'machine-learning']",Full-time,Mid-Level,,"Ad Tech, Marketplace, Platforms",1k–5k people,Public
-275,"['vue.js', 'scss-lint', 'html5', 'babel', 'javascript']",Full-time,Senior,"Frontend Developer, Full Stack Developer","Assessment, Education Technology, Software Development",51–200 people,Public
-276,"['vue.js', 'html', 'reactjs', 'javascript', 'css']",Full-time,"Mid-Level, Senior, Lead","Frontend Developer, Full Stack Developer","Digital Agency, E-Commerce, Enterprise CMS",501–1k people,Private
+273,"['automation', 'qa', 'testing', 'vbscript', 'qtp']",Full-time,"Junior, Mid-Level",QA/Test Developer,Financial Services,10k+ people,Public
+275,"['html5', 'javascript', 'babel', 'vue.js', 'scss-lint']",Full-time,Senior,"Frontend Developer, Full Stack Developer","Assessment, Education Technology, Software Development",51–200 people,Public
+276,"['reactjs', 'css', 'html', 'javascript', 'vue.js']",Full-time,"Mid-Level, Senior, Lead","Frontend Developer, Full Stack Developer","Digital Agency, E-Commerce, Enterprise CMS",501–1k people,Private
 277,"['testing', 'qa']",Full-time,,QA/Test Developer,,,
-278,"['hibernate', 'java-ee', 'python', 'java', 'spring']",Full-time,Senior,Full Stack Developer,Financial Services,10k+ people,Public
-279,"['xml', 'php', 'python']",Full-time,,,,,
-280,"['typescript', 'linux', 'nest', 'java', 'node.js']",Full-time,"Mid-Level, Senior",,"Academic Research, Agile Software Development, Machine Learning",1k–5k people,Public
-281,"['php', 'html', 'oop', 'symfony', 'css']",Full-time,"Junior, Mid-Level, Senior","Backend Developer, Full Stack Developer","Digital Agency, E-Commerce, Enterprise CMS",501–1k people,Private
+278,"['java-ee', 'java', 'hibernate', 'python', 'spring']",Full-time,Senior,Full Stack Developer,Financial Services,10k+ people,Public
+281,"['symfony', 'css', 'html', 'oop', 'php']",Full-time,"Junior, Mid-Level, Senior","Backend Developer, Full Stack Developer","Digital Agency, E-Commerce, Enterprise CMS",501–1k people,Private
 282,"['javascript', 'angularjs']",Full-time,,Full Stack Developer,,,
-283,"['kubernetes', 'linux', 'cloud']",Internship,Student,System Administrator,Information Technology,201–500 people,Private
-284,"['angular', 'java']",Full-time,Mid-Level,Full Stack Developer,"Chemicals, Security Software, Software Development / Engineering",1k–5k people,Private
-285,['php'],Full-time,,,,,
-286,"['project-management', 'php', 'android']",Full-time,,"Mobile Developer, Product Manager",,,
-287,"['mobile', 'security', 'agile', 'web', 'cloud']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
-288,"['testing', 'agile', 'automated-tests']",Full-time,,QA/Test Developer,Telecommunications,10k+ people,Public
-289,"['kubernetes', 'linux', 'cloud']",Internship,Student,System Administrator,Information Technology,201–500 people,Private
-290,"['wordpress', 'php', 'android']",Full-time,,Mobile Developer,,,
-291,"['php', 'redis', 'java', 'mysql', 'c']",Full-time,"Senior, Lead",Backend Developer,"Ad Tech, Mobile, Mobile Development",11–50 people,Private
-292,"['kubernetes', 'devops', 'amazon-web-services', 'python', 'serverless']",Full-time,"Junior, Mid-Level, Senior",DevOps,"Cloud Computing, Cloud Services, Consulting",1–10 people,Private
-293,"['python-3.x', 'typescript', 'django', 'reactjs', 'angular']",Contract,"Senior, Lead",,"Assessment, Consulting, Recruiting",11–50 people,Private
-294,"['spring-mvc', 'java', 'spring']",Full-time,,,,,
-295,"['wordpress', 'php', 'html']",Full-time,,,,,
+283,"['cloud', 'kubernetes', 'linux']",Internship,Student,System Administrator,Information Technology,201–500 people,Private
+284,"['java', 'angular']",Full-time,Mid-Level,Full Stack Developer,"Chemicals, Security Software, Software Development / Engineering",1k–5k people,Private
+286,"['android', 'php', 'project-management']",Full-time,,"Mobile Developer, Product Manager",,,
+287,"['cloud', 'web', 'agile', 'security', 'mobile']",Internship,Student,Mobile Developer,Information Technology,201–500 people,Private
+288,"['agile', 'testing', 'automated-tests']",Full-time,,QA/Test Developer,Telecommunications,10k+ people,Public
+289,"['cloud', 'kubernetes', 'linux']",Internship,Student,System Administrator,Information Technology,201–500 people,Private
+290,"['android', 'wordpress', 'php']",Full-time,,Mobile Developer,,,
+291,"['mysql', 'c', 'java', 'php', 'redis']",Full-time,"Senior, Lead",Backend Developer,"Ad Tech, Mobile, Mobile Development",11–50 people,Private
+292,"['devops', 'kubernetes', 'serverless', 'python', 'amazon-web-services']",Full-time,"Junior, Mid-Level, Senior",DevOps,"Cloud Computing, Cloud Services, Consulting",1–10 people,Private
 296,"['user-interface', 'android']",Full-time,,"Designer, Frontend Developer, Mobile Developer",,,
-297,"['mysql', 'php', 'javascript']",Full-time,,,,,
-298,"['sql', 'azure', 'c#', 'asp.net']",Full-time,"Mid-Level, Senior",,"Architecture, Cloud Computing, Software Development / Engineering",51–200 people,Private
-299,"['ios', 'objective-c', 'java', 'swift', 'angular']",Full-time,Senior,Mobile Developer,"Data & Analytics, Sports Data, Sports Technology",51–200 people,Private
-300,['php'],Full-time,,,,,
-301,"['android-studio', 'java', 'kotlin', 'android', 'git']",Full-time,Senior,Mobile Developer,"Automotive, Computer Graphics, Project Management",11–50 people,Private
-302,"['sql', 'java']",Full-time,,,,,
-303,"['reactjs', 'java', 'html']",Full-time,,,,,
-304,"['ios', 'objective-c', 'swift']",Full-time,,Mobile Developer,,,
-305,"['wordpress', 'css', 'php']",Full-time,,,,,
-306,"['wordpress', 'mysql', 'php']",Full-time,,,,,
-307,"['javascript', 'reactjs', 'redux', 'react-native']",Full-time,"Junior, Mid-Level","Frontend Developer, Full Stack Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
-308,"['javascript', 'reactjs', 'ios']",Full-time,,Mobile Developer,,,
-309,"['ios', 'objective-c', 'swift']",Full-time,,Mobile Developer,,,
-310,"['php', 'python']",Full-time,,,,,
-311,"['asp.net-mvc', 'model-view-controller', 'c#']",Full-time,,,,,
-312,"['javascript', 'node.js', 'angularjs']",Full-time,,Mobile Developer,,,
-313,"['amazon-web-services', 'reactjs', 'javascript']",Full-time,,,,,
-314,"['javascript', 'php']",Full-time,,Full Stack Developer,,,
-315,"['vba', 'identity', 'powershell']",Full-time,Senior,,"Logistics & Distribution, Retail",10k+ people,Private
-316,"['linux', 'python', 'c', 'embedded-linux', 'c++']",Full-time,"Junior, Mid-Level, Senior",Embedded Developer,"Software Consulting, Software Development / Engineering",51–200 people,Private
-317,"['mysql', 'php', 'ajax']",Full-time,,,,,
-318,"['asp.net-mvc', 'android', 'asp.net']",Full-time,,Mobile Developer,,,
-319,"['amazon-web-services', 'node.js', 'agile', 'cloud']",Full-time,"Senior, Lead, Manager",,"Automotive, Carsharing, E-Commerce",51–200 people,VC Funded
-320,"['dataset', 'data-visualization', 'sql', 'database', 'snowflake-datawarehouse']",Full-time,Senior,"Backend Developer, Database Administrator","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-321,"['c#', 'sap', 'java', 'abap', 'c++']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,"Agile Software Development, Computer Software, IT Consulting",501–1k people,Public
-322,"['javascript', 'html5', 'html']",Full-time,,,,,
-323,"['hibernate', 'maven', 'java', 'spring', 'spring-boot']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,Digital Agency,201–500 people,Private
-324,"['bash', 'php', 'python', 'mysql', 'sysadmin', 'network-security']",Full-time,Mid-Level,System Administrator,"Ad Tech, Mobile, Mobile Development",11–50 people,Private
-325,"['ios', 'reactjs', 'android']",Full-time,,Mobile Developer,,,
-326,['.net'],Full-time,,,,,
-327,"['angularjs', 'reactjs', 'user-interface', 'user-experience', 'javascript']",Full-time,Senior,Frontend Developer,"Accounting, Consulting, Taxes",5k–10k people,Private
-328,"['c#', 'python', 'java', 'oop', 'c++']",Full-time,"Junior, Mid-Level",Backend Developer,"Agile Software Development, Computer Software, CPQ (Configure,  Price,  Quote)",51–200 people,Private
-329,"['java', 'docker', 'reactjs', 'node.js', 'javascript']",Full-time,Senior,"Backend Developer, Full Stack Developer","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
-330,"['ios', 'java', 'swift']",Full-time,,Mobile Developer,,,
+299,"['swift', 'objective-c', 'ios', 'angular', 'java']",Full-time,Senior,Mobile Developer,"Data & Analytics, Sports Data, Sports Technology",51–200 people,Private
+301,"['android', 'git', 'kotlin', 'java', 'android-studio']",Full-time,Senior,Mobile Developer,"Automotive, Computer Graphics, Project Management",11–50 people,Private
+304,"['ios', 'swift', 'objective-c']",Full-time,,Mobile Developer,,,
+307,"['redux', 'react-native', 'reactjs', 'javascript']",Full-time,"Junior, Mid-Level","Frontend Developer, Full Stack Developer","Health Care, Insurance, Web Technology",1k–5k people,VC Funded
+308,"['ios', 'reactjs', 'javascript']",Full-time,,Mobile Developer,,,
+309,"['ios', 'swift', 'objective-c']",Full-time,,Mobile Developer,,,
+312,"['node.js', 'angularjs', 'javascript']",Full-time,,Mobile Developer,,,
+314,"['php', 'javascript']",Full-time,,Full Stack Developer,,,
+316,"['c', 'c++', 'linux', 'python', 'embedded-linux']",Full-time,"Junior, Mid-Level, Senior",Embedded Developer,"Software Consulting, Software Development / Engineering",51–200 people,Private
+318,"['android', 'asp.net', 'asp.net-mvc']",Full-time,,Mobile Developer,,,
+320,"['snowflake-datawarehouse', 'data-visualization', 'dataset', 'database', 'sql']",Full-time,Senior,"Backend Developer, Database Administrator","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+321,"['c#', 'c++', 'java', 'abap', 'sap']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,"Agile Software Development, Computer Software, IT Consulting",501–1k people,Public
+323,"['java', 'hibernate', 'spring-boot', 'maven', 'spring']",Full-time,"Junior, Mid-Level, Senior",Backend Developer,Digital Agency,201–500 people,Private
+324,"['mysql', 'bash', 'sysadmin', 'python', 'php', 'network-security']",Full-time,Mid-Level,System Administrator,"Ad Tech, Mobile, Mobile Development",11–50 people,Private
+325,"['android', 'ios', 'reactjs']",Full-time,,Mobile Developer,,,
+327,"['user-interface', 'reactjs', 'user-experience', 'angularjs', 'javascript']",Full-time,Senior,Frontend Developer,"Accounting, Consulting, Taxes",5k–10k people,Private
+328,"['c#', 'c++', 'oop', 'java', 'python']",Full-time,"Junior, Mid-Level",Backend Developer,"Agile Software Development, Computer Software, CPQ (Configure,  Price,  Quote)",51–200 people,Private
+329,"['docker', 'reactjs', 'javascript', 'java', 'node.js']",Full-time,Senior,"Backend Developer, Full Stack Developer","Health Care, Information Technology, Software Development / Engineering",201–500 people,Private
+330,"['java', 'ios', 'swift']",Full-time,,Mobile Developer,,,
 331,"['salesforce', 'salesforce-lightning']",Full-time,"Mid-Level, Senior",System Administrator,"Addiction Treatment, Digital Health, Education Technology",11–50 people,VC Funded
-332,"['unix', 'python', 'amazon-web-services', 'salt-stack', 'amazon-ec2']",Full-time,"Mid-Level, Senior, Lead",DevOps,"Computer Software, Real Estate, Web Technology",51–200 people,VC Funded
-333,"['unity3d', 'xamarin', 'c#']",Full-time,,Graphics/Game Developer,,,
-334,"['c#', 'ruby', 'python', 'java', 'javascript']",Contract,"Mid-Level, Senior, Lead",,Software Development / Engineering,51–200 people,VC Funded
-335,"['hpc', 'bigdata', 'linux', 'python', 'version-control']",Full-time,"Junior, Mid-Level, Senior",,"Academic Research, Astronomy, Information Services",201–500 people,Public
-336,"['asp.net-web-api', 'c#', 'asp.net']",Full-time,,,,,
-337,"['c#', 'ruby', 'python', 'java', 'javascript']",Contract,"Mid-Level, Senior, Lead",,Software Development / Engineering,51–200 people,VC Funded
-338,"['project-management', 'java', 'angularjs']",Full-time,,"Frontend Developer, Product Manager",,,
-339,"['javascript', 'laravel', 'php']",Full-time,,Full Stack Developer,,,
-340,"['web-services', 'design', 'http']",Full-time,,,"Health Care, Information Technology",10k+ people,Private
-341,"['machine-learning', 'sql', 'r']",Full-time,"Mid-Level, Senior",Data Scientist,"Market research, Web Technology",501–1k people,Private
+332,"['salt-stack', 'unix', 'amazon-ec2', 'python', 'amazon-web-services']",Full-time,"Mid-Level, Senior, Lead",DevOps,"Computer Software, Real Estate, Web Technology",51–200 people,VC Funded
+333,"['c#', 'unity3d', 'xamarin']",Full-time,,Graphics/Game Developer,,,
+338,"['java', 'angularjs', 'project-management']",Full-time,,"Frontend Developer, Product Manager",,,
+339,"['laravel', 'php', 'javascript']",Full-time,,Full Stack Developer,,,
+341,"['r', 'machine-learning', 'sql']",Full-time,"Mid-Level, Senior",Data Scientist,"Market research, Web Technology",501–1k people,Private
