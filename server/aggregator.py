@@ -5,7 +5,7 @@ import os
 import json
 import ast
 import numpy as np
-
+import re
 
 class Aggregator:
     def __init__(self):
@@ -39,7 +39,7 @@ class Aggregator:
         """
         Return statistics for a role from a db 
         """
-        new_roles = self.db.loc[self.db['Role'].isin([role])]
+        new_roles = self.db.loc[self.db['Role'].str.contains(role,flags=re.IGNORECASE, regex=True)]
         all_tags = new_roles['Tags'].to_numpy()
         # flatten all tags
         if all_tags.any():
@@ -60,4 +60,4 @@ class Aggregator:
 if __name__ == '__main__':
     ag = Aggregator()
     # ag.build_statistics()
-    print(ag.search_in_db('Product Manager', 2))
+    print(ag.search_in_db('product manager', 3))
