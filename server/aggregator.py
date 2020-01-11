@@ -8,7 +8,7 @@ class Aggregator:
     def __init__(self):
         self.src = 'data/stack_overflow_careers'
         self.SOC = StackOverflowCarrers(100)
-        # self.db = pd.read_csv('db.csv')
+        self.db = pd.read_csv('db.csv')
 
     def build_statistics(self):
         filenames = [os.path.join(self.src, fn) for fn in os.listdir(self.src)]
@@ -35,7 +35,7 @@ class Aggregator:
         """
         Return statistics for a role from a db 
         """
-        new_roles = self.db.loc[db['Role'].isin([role])]
+        new_roles = self.db.loc[self.db['Role'].isin([role])]
         all_tags = new_roles['Skills'].to_numpy()
         # flatten all tags
         flat_tags = np.concatenate(all_tags).ravel()

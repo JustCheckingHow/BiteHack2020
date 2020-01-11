@@ -2,8 +2,11 @@ from flask import Flask, request
 from flask_cors import CORS
 app = Flask(__name__)
 import json
+from aggregator import Aggregator
 
 CORS(app)
+
+aggregator = Aggregator()
 
 @app.route('/')
 def hello():
@@ -18,14 +21,9 @@ def hello():
 
 @app.route('/search', methods=['GET'])
 def search():
-    x = {
-      "name": "John",
-      "age": 30,
-      "city": "New York"
-    }
-
-    print(json.dumps(x))
-    return json.dumps(x)
+    #print(request.args['test'])
+    temp = aggregator.search_in_db(request.args['test'])
+    return temp
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
