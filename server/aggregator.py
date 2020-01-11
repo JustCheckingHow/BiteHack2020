@@ -42,16 +42,19 @@ class Aggregator:
         new_roles = self.db.loc[self.db['Role'].isin([role])]
         all_tags = new_roles['Tags'].to_numpy()
         # flatten all tags
-        print(all_tags)
-        flat_tags = np.concatenate(all_tags).ravel()
-        c = Counter(flat_tags)
-        final_statistics = defaultdict(dict)
-        for k, v in c.most_common(limit):
-            final_statistics[k] = {
-                'count': v,
-                'percentage': v * 100 / len(new_roles)
-            }
-        return json.dumps(final_statistics)
+        if all_tags.any():
+            flat_tags = np.concatenate(all_tags).ravel()
+            c = Counter(flat_tags)
+            final_statistics = []
+            for k, v in c.most_common(limit):
+                final_statistics.append({
+                    'skill': k,
+                    'count': v,
+                    'percentage': v * 100 / len(new_roles)
+                })
+            return json.dumps(final_statistics)
+        else:
+            return json.dumps("")
 
 
 if __name__ == '__main__':
