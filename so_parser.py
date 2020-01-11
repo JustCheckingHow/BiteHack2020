@@ -14,7 +14,7 @@ class StackOverflowCarrers:
     def __init__(self, pages):
         self.main_url = 'https://stackoverflow.com/'
         self.pages = pages
-        self.save_dir = 'data/stack_overflow_careers'
+        self.save_dir = 'data/soc'
         self.count = 1
 
     def download_job_specific(self, job_url, job_title):
@@ -25,7 +25,7 @@ class StackOverflowCarrers:
             jb_title = job_title.replace(' ', '_')
             for sgn in ['?', '*', '!', ',', '-', '/', '\\', '(', ')']:
                 jb_title = jb_title.replace(sgn, '')
-            with open(os.path.join(self.save_dir, f"{jb_title}.html"),
+            with open(os.path.join(self.save_dir, f"{self.count}_{jb_title}.html"),
                       'w') as f:
                 f.write(html_code)
             self.count += 1
@@ -38,7 +38,6 @@ class StackOverflowCarrers:
             print(url)
             with urllib.request.urlopen(url) as url_handl:
                 html_code = url_handl.read()
-                #content > div.js-search-container.search-container > div.grid.fd-row > div.grid--cell.fl1 > div.js-search-results.flush-left > div > div:nth-child(23)
                 soup = BeautifulSoup(html_code, 'html.parser')
                 jobs_on_page = soup.findAll("div", {"data-jobid": True})
                 for job in jobs_on_page:
@@ -62,22 +61,27 @@ class StackOverflowCarrers:
         with open(filename, 'r') as f:
             html_text = f.read()
             soup = BeautifulSoup(html_text, 'html.parser')
-            job_tags = soup.findAll('a',
-                                    {"class": "post-tag job-link no-tag-menu"})
+
             job_desc = soup.findAll('div', {'class': "mb8"})
             for desc in job_desc:
                 desc_type = desc.find('span', {'class': False}).text.strip().replace(':', '')
                 desc_content = desc.find('span', {'class': True}).text.strip().replace(':', '')
                 if desc_type in metrics:
                     metrics[desc_type] = desc_content
-            tags = [tag.text for tag in job_tags]
 
-        return tags, metrics
-
-
+            tags = [] 
+            job_section = soup.findAll('section', {'class': 'mb32'})
+            for section in job_section:
+                subh2 = section.findAll('h2', {'class': "fs-subheading mb16"})
+                for h2 in subh2:
+                    if h2.text == 'Technologies':
+                        job_tags = section.findAll('a', {"class": "post-tag job-link no-tag-menu"})
+                        tags = [tag.text for tag in job_tags]
+                        return tags, metrics
+        
 if __name__ == "__main__":
     soc = StackOverflowCarrers(10000)
-    soc.main_scrapper(2)
-    # print(
-    #     soc.parse_job_posting(
-    #         'data/stack_overflow_careers/Senior_Android_Developer.html'))
+    # soc.main_scrapper(2)
+    print(
+        soc.parse_job_posting(
+            'data/stack_overflow_careers/Web_Developer.html'))
