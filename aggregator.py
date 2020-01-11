@@ -16,7 +16,7 @@ class Aggregator:
             try:
                 tags, desc = self.SOC.parse_job_posting(filename)
                 if tags:
-                    statistics['tags'].append(list(set(tags)))
+                    statistics['Tags'].append(list(set(tags)))
                     if len(tags) > 20:
                         print(tags, desc)
                     for k, v in desc.items():
@@ -31,4 +31,4 @@ class Aggregator:
 
 if __name__ == '__main__':
     ag = Aggregator()
-    ag.build_statistics()
+    # ag.build_statistics()
