@@ -27,6 +27,10 @@ def calc_tfidf(t, d, D):
 
 
 class Aggregator:
+    synonyms = [
+        ("developer", "engineer")
+        ]
+
     def __init__(self):
         self.src = '../data/soc'
         self.SOC = StackOverflowCarrers(100)
@@ -55,11 +59,22 @@ class Aggregator:
         # )
         df.to_pickle('db_large.pkl')
 
+
+    def replace_with_synonyms(self, role):
+        for i in Aggregator.synonyms:
+            for word in role.split(' '):
+                if word in str(i):
+                    role = role.replace(word, f"({'|'.join(i)})")
+        
+        return role
+
     def search_in_db(self, role, limit=None):
         """
         Return statistics for a role from a db 
         """
         role = role.replace("+", "\+")
+        role = self.replace_with_synonyms(role)
+        print(role)
         new_roles = self.db.loc[self.db['Role'].str.contains(
             role, flags=re.IGNORECASE, regex=True)]
 
