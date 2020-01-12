@@ -117,8 +117,8 @@
             $("#mainTable").fadeIn(1000);
         }
 
-        var main_skills = $("#mainSkills").val();
-        var additional_skills = $("#additionalSkills").val();
+        var main_skills = $("#mainSkills").val().replace(", ", "");
+        var additional_skills = $("#additionalSkills").val().replace(", ", "")
 		var all_skills = main_skills.concat("|").concat(additional_skills);
 
 

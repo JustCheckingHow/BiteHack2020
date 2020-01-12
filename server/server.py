@@ -38,6 +38,7 @@ def reverse_search():
 
 @app.route('/search', methods=['GET'])
 def search():
+    print(request.args['text'])
     return aggregator.search_in_db(request.args['text'], int(request.args['limit']))
     
 @app.route('/stats', methods=['GET'])
