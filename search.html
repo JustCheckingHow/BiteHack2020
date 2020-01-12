@@ -90,10 +90,10 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="d-flex row mt-5 col-8 mx-auto">
+        <div class="d-flex row mt-3 col-8 mx-auto">
             <div id="barChartContainer" class="pb-4">
                 <canvas id="barChart" class="pb-1"
-                    style="height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
+                    style="height: 370px; aspect-ratio: 4/3;"></canvas>
             </div>
 
             <table id="mainTable" class="table table-hover mt-3" style="background-color: white;">
@@ -212,7 +212,7 @@
 
             $("#mainTable").fadeOut(300);
             $("#mainTable").html('<tbody><tr></tr></tbody>');
-            $("#barChartContainer").html('<canvas id="barChart" style = "padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;" ></canvas>');
+            $("#barChartContainer").html('<canvas id="barChart" style = "padding-bottom: 15px; height: 370px; aspect-ratio: 4/3;" ></canvas>');
 
             $("#mainTable").fadeIn(1000);
         }
