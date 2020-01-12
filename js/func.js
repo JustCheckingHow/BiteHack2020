@@ -24,16 +24,15 @@ function onReady() {
     });
 }
 
+
 let colorMap = {
     0: "#a3a3a3",
     20: "#7f94a3",
     40: "#788AA3",
     60: "#e1b794",
-    80: "#666A86",
     100: "#DB2763"
 }
 let colorThres = Object.keys(colorMap)
-
 
 function craftRow(skill, value) {
     let color = colorMap[20]
@@ -46,8 +45,8 @@ function craftRow(skill, value) {
         }
     }
 
-    row = `<tr>
-            <td align="left">${skill}</td>
+    row = `<tr class="clickable-row" onclick='onSkillClick("${skill}")'>
+            <td align="left" id="skillName">${skill}</td>
             <td align="center">
                 <div class="container">
                     <div class="row">
