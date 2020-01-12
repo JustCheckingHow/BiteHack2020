@@ -182,7 +182,7 @@
     var options = {
         title: {
             display: true,
-            text: 'What skills of important quality?',
+            text: 'What skills are of important quality?',
             position: 'top'
         },
         rotation: -0.7 * Math.PI,
@@ -226,7 +226,7 @@
         $("#modalTable").html("<tbody><tr id='toDelete'></tr></tbody>");
 
         $.ajax({
-            url: "http://127.0.0.1:5000/stats",
+            url: "http://46.101.185.98:5000/stats",
             data: {
                 skill: $('#exampleModalCenterTitle').html(),
                 limit: 10
@@ -282,7 +282,7 @@
         filled = true;
 
         $.ajax({
-            url: "http://127.0.0.1:5000/search",
+            url: "http://46.101.185.98:5000/search",
             data: {
                 text: $('#positionName').val(),
                 limit: 20
@@ -300,6 +300,7 @@
                     let c = 0
                     let bckColors = []
                     let sumOffers = result_arr[0]['unique']
+		    console.log(sumOffers)
                     result_arr.forEach(element => {
                         // addRow(element);
                         if (element['count'] != undefined) {
