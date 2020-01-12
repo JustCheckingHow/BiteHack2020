@@ -7,6 +7,7 @@ import re
 import os
 from os import path
 import time
+from pathlib import Path
 
 class fluffScrapper():
 
@@ -101,6 +102,8 @@ class fluffScrapper():
         return False
 
     def save_offers(self):
+
+        Path('./noFluffJobs/websites').mkdir(parents = True, exist_ok = True)
 
         for offer in self.offers:
 

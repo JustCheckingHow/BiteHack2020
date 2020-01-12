@@ -1,49 +1,62 @@
+from collections import defaultdict
 from bs4 import BeautifulSoup
+import pandas as pd
 import codecs
 import os
 
-ls = os.listdir()
+class noFluffJobsParser():
 
-with codecs.open("angular-developer-bravura-solutions-polska-warsaw-f7xjbfmb.html", 'r', encoding='iso-8859-15') as f:
-    data = f.read()
-bs = BeautifulSoup(data, "html.parser")
-print(bs.find_all("dd"))
+    def __init__(self):
+        self.results = []
+
+        self.ens_data = {
+            'Role':       [],
+            'Tags' :      [],
+            'additional': []
+        }
+
+    def parse_data(self, data):
+        bs = BeautifulSoup(data, 'html.parser')
+        role = bs.find('nfj-posting-header', {'id': 'posting-header'}).find('h1').getText()
+        tags = []
+        additional = {}
+
+        for aux in bs.findAll('nfj-posting-requirements'):
+            for tag in aux.findAll('button'):
+                tags += [tag.getText().replace('\n','')]
+
+        for aux in bs.find('nfj-posting-specs', {'id': 'posting-specs'}).findAll('div', {'class': 'row'}):
+            title = aux.find('div', {'class', 'col-sm-6'}).getText()
+            value = aux.find('div', {'class', 'col-sm-6 value'}).getText()
+
+            additional[title] = value
+
+        return role, tags, additional
+
+    def parse_files(self, filenames):
+        for filename in filenames:
+            if not filename.endswith('.html'):
+                continue
+
+            with open(filename, 'r', encoding = 'utf-8') as f:
+                data = f.read()
+                role, tags, additional = parser.parse_data(data)
+
+                if tags:
+                    self.ens_data['Role'] += [role]
+                    self.ens_data['Tags'] += [tags]
+                    self.ens_data['additional'] += [additional]
+
+if __name__ == '__main__':
+    parser = noFluffJobsParser()
+
+    ls = os.listdir('noFluffJobs/websites')
+
+    parser.parse_files(['./noFluffJobs/websites/' + dir for dir in ls])
+
+    df = pd.DataFrame.from_dict(parser.ens_data)
+
+    df.to_csv('no_fluffs.csv')
 
 
-import pandas as pd
-from collections import defaultdict
 
-ens_data = {
-    'Role': [],
-    'Tags' : []
-}
-stoplist = ["\n", " "]
-
-def parse(data):
-    bs = BeautifulSoup(data, "html.parser")
-    role = bs.find_all("h1")[1].text
-#     role=""
-    buttons = bs.find_all('button')[1:]
-    tags = []
-    for el in buttons:
-        if el.text.find("+1") != -1:
-            break
-        tags += [el.text.lower().replace("\n", "")]
-
-    return role, tags
-
-
-
-for filename in ls:
-    if not filename.endswith('.html'):
-        continue
-    with open(filename, 'r', encoding='utf-8') as f:
-        txt = f.read()
-        r, t = parse(txt)
-        if t:
-            ens_data['Role'].append(r)
-            ens_data['Tags'].append(t)
-
-df = pd.DataFrame.from_dict(ens_data)
-
-df.to_csv("no_fluffs.csv")

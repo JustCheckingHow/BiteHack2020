@@ -146,7 +146,7 @@
                     let c = 0
                     let bckColors = []
                     result_arr.forEach(element => {
-                        addRow(element);
+                        // addRow(element);
                         datapoints.push(element['percentage'])
                         labelpoints.push(element['skill'])
                         c++
@@ -169,6 +169,11 @@
                         data: data,
                         options: options
                     });
+                    setTimeout(function () {
+                        result_arr.forEach(element => {
+                            addRow(element);
+                        });
+                    }, 1000);
                 }
             }
         });
@@ -206,7 +211,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-1" style="font-family: sans-serif bold">
                                 ${value}%
                             </div>
                         </div>
@@ -227,6 +232,14 @@
         $('#mainTable tr:last').after(row);
 
     }
+
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            callAjax();
+            return false;
+        }
+    });
 </script>
 
 </html>
