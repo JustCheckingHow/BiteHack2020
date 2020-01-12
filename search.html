@@ -288,12 +288,14 @@
 
                     let c = 0
                     let bckColors = []
-                    let sumOffers = 0
+                    let sumOffers = result_arr[0]['unique']
                     result_arr.forEach(element => {
                         // addRow(element);
-                        datapoints.push(element['percentage'])
-                        labelpoints.push(element['skill'])
-                        sumOffers += element['count']
+                        if (element['count'] != undefined) {
+                            datapoints.push(element['count'])
+                            labelpoints.push(element['skill'])
+                        }
+                        // sumOffers += element['count']
                         c++
                     });
 
@@ -328,12 +330,15 @@
     };
 
     function addRow(parsedRow) {
-        var crafted = craftRow(parsedRow.skill, parsedRow.percentage);
-        $("#spinner").remove();
+        if (parsedRow['skill'] != undefined) {
 
-        $("#mainTable").fadeIn(1000);
+            var crafted = craftRow(parsedRow.skill, parsedRow.percentage);
+            $("#spinner").remove();
 
-        $('#mainTable tr:last').after(crafted);
+            $("#mainTable").fadeIn(1000);
+
+            $('#mainTable tr:last').after(crafted);
+        }
     }
 
 

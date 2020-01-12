@@ -62,12 +62,13 @@ class Aggregator:
         role = role.replace("+", "\+")
         new_roles = self.db.loc[self.db['Role'].str.contains(
             role, flags=re.IGNORECASE, regex=True)]
+
         all_tags = new_roles['Tags'].to_numpy()
         # flatten all tags
         if all_tags.any():
             flat_tags = np.concatenate(all_tags).ravel()
             c = Counter(flat_tags)
-            final_statistics = []
+            final_statistics = [{"unique": len(new_roles)}]
             for k, v in c.most_common(limit):
                 final_statistics.append({
                     'skill':
