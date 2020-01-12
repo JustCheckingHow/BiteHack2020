@@ -11,6 +11,7 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="js/func.js"></script>
     <style>
         html,
         body {
@@ -37,8 +38,15 @@
         .spinner-border {
             color: #e3e3e3;
         }
+
         .navbar {
             z-index: 1021;
+        }
+
+        .floatingNav {
+            width: calc(100vh - 100px);
+            border-radius: 2px;
+            box-shadow: 0px 1px 10px #999;
         }
     </style>
 </head>
@@ -96,9 +104,11 @@
 <script>
     var filled = false;
 
-    $(document).ready(function () {
-        console.log("ready!");
-    });
+    // $(document).ready(function () {
+    //     console.log("ready!");
+    // });
+    $(document).ready(onReady);
+
 
     function callAjax() {
         if (filled) {
@@ -146,49 +156,6 @@
         $("#mainTable").fadeIn(1000);
 
         $('#mainTable tr:last').after(crafted);
-    }
-
-    function notFound() {
-        row = `<tr>
-                <td align="left">No results found</td>
-                </tr>`
-        $("#spinner").remove();
-
-        $("#mainTable").fadeIn(1000);
-
-        $('#mainTable tr:last').after(row);
-
-    }
-
-    $('form input').keydown(function (e) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            callAjax();
-            return false;
-        }
-    });
-    function craftRow(skill, value) {
-        row = `<tr>
-                <td align="left">${skill}</td>
-                <td align="center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-10 mt-1">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar"
-                                        style="width: ${value}%; background-color: #e1b794;" aria-valuenow="${value}"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-1">
-                                ${value}%
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>`
-        return row;
     }
 </script>
 
