@@ -24,20 +24,18 @@ def calc_tfidf(t, d, D):
     tf = 0.5 + \
         0.5*d[t]/tmax
     x = [term_in_doc(t, D[role]) for role in D]
-    idf = np.log(len(d)/sum(x))
-    return tf*idf
+    idf = np.log(len(d) / sum(x))
+    return tf * idf
 
 
 class Aggregator:
-    synonyms = [
-        ("developer", "engineer")
-    ]
+    synonyms = [("developer", "engineer")]
     forced = ["C", "java"]
 
     def __init__(self):
         self.src = '../data/soc'
         self.SOC = StackOverflowCarrers(100)
-        self.db = pd.read_pickle('concat_db.pkl')
+        self.db = pd.read_pickle('concat_db2.pkl')
         self.unique_roles = self.db['Role'].unique()
         self.role_tfidf = self.create_documents_counts(self.db)
 
@@ -87,33 +85,27 @@ class Aggregator:
         """
         Find most frequently coocurring skills
         """
-        # role = self.preprocess_role(role)
-        # new_roles = self.db.loc[self.db['Role'].str.contains(
-        #     role, flags=re.IGNORECASE, regex=True)]
-
         skill = skill.replace("+", "\+")
         skill = self.force_boundaries(skill)
-        res = defaultdict(int)
-        rows_containing = self.db.loc[self.db['Tags'].astype(
-            str).str.contains(skill, flags=re.IGNORECASE, regex=True)]
+        rows_containing = self.db.loc[self.db['Tags'].astype(str).str.contains(
+            skill, flags=re.IGNORECASE, regex=True)]
         flattened = []
         for offer in rows_containing['Tags'].values:
             flattened.extend(offer)
-        
+
         c = Counter(flattened)
         final_statistics = []
         for k, v in c.most_common(10):
             to_cmp = k.replace("+", "\+")
             to_cmp = self.force_boundaries(to_cmp)
-            if to_cmp!=skill:
+            if to_cmp != skill:
                 final_statistics.append({
                     'name':
                     k,
                     'result':
-                    int(v/len(rows_containing)*100)
+                    int(v / len(rows_containing) * 100)
                 })
         return json.dumps(final_statistics)
-
 
     def search_in_db(self, role, limit=None):
         """
