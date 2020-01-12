@@ -32,6 +32,13 @@
             box-shadow: 0 0 0 3px #e3e3e3;
         }
 
+        #modalTable {
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 0 #e3e3e3;
+        }
+
         #mainTable {
             display: none;
         }
@@ -89,11 +96,38 @@
                     style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
             </div>
 
-            <table id="mainTable" class="table" style="background-color: white;">
+            <table id="mainTable" class="table table-hover" style="background-color: white;">
                 <tbody>
                     <tr></tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="modalTable" class="table" style="background-color: white;">
+                        <div id="modalSpinner" class="spinner-grow spinner-border mx-auto" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <tbody>
+                            <tr id="toDelete"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -124,9 +158,43 @@
 
     var filled = false;
 
-    $(document).ready(onReady);
+    $(document).ready(function () {
+        onReady();
+    });
+
+    function onSkillClick(skill) {
+        console.log(skill);
+        fillModal(skill, 'dupa');
+        $("#exampleModalCenter").modal('show');
+    }
+
+    function fillModal(skill, data) {
+        $("#exampleModalCenter").find('#exampleModalCenterTitle').html(skill);
+        $("#modalTable").html("<tbody><tr></tr></tbody>");
+
+        addModalRow("asd");
+        addModalRow("asd");
+        $("#toDelete").remove();
+    }
+
+    function craftModalRow(key, value) {
+        let row = `<tr>
+            <td align="center" id="skillName">${key}</td>
+            <td align="center">${value}</td>
+        </tr>`
+        return row;
+    }
+
+    function addModalRow(parsedRow) {
+        var crafted = craftModalRow("asdf", "qweqwe");
+        $("#modalSpinner").remove();
+
+        $("#modalTable").fadeIn(1000);
+
+        $('#modalTable tr:last').after(crafted);
+    }
+
     $(window).scroll(function () {
-        console.log($(window).scrollTop());
         if ($(window).scrollTop() > 400) {
             $('#topBar').addClass('floatingNav');
         } else {
@@ -139,7 +207,7 @@
             $("#chartContainer").fadeOut(300);
 
             $("#mainTable").fadeOut(300);
-            $("#mainTable").html('<tr></tr>');
+            $("#mainTable").html('<tbody><tr></tr></tbody>');
             $("#barChartContainer").html('<canvas id="barChart" style = "padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;" ></canvas>');
 
             $("#mainTable").fadeIn(1000);
@@ -183,19 +251,19 @@
                         }],
                         labels: labelpoints
                     }
-
-                    var canvas = document.getElementById("barChart");
-                    var ctx = canvas.getContext('2d');
-                    var chart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: data,
-                        options: options
-                    });
                     setTimeout(function () {
-                        result_arr.forEach(element => {
-                            addRow(element);
+                        var canvas = document.getElementById("barChart");
+                        var ctx = canvas.getContext('2d');
+                        var chart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: data,
+                            options: options
                         });
                     }, 1000);
+                    result_arr.forEach(element => {
+                        addRow(element);
+                    });
+
                 }
             }
         });
@@ -209,6 +277,9 @@
 
         $('#mainTable tr:last').after(crafted);
     }
+
+
+
 </script>
 
 </html>

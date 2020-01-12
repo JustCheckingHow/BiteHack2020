@@ -24,10 +24,9 @@ function onReady() {
     });
 }
 
-
 function craftRow(skill, value) {
-    row = `<tr>
-            <td align="left">${skill}</td>
+    row = `<tr class="clickable-row" onclick='onSkillClick("${skill}")'>
+            <td align="left" id="skillName">${skill}</td>
             <td align="center">
                 <div class="container">
                     <div class="row">
