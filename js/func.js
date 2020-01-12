@@ -46,11 +46,11 @@ function craftRow(skill, value) {
     }
 
     row = `<tr class="clickable-row" onclick='onSkillClick("${skill}")'>
-            <td align="left" id="skillName">${skill}</td>
-            <td align="center">
+            <td align="left" id="skillName" style="width:60%">${skill}</td>
+            <td align="center"  style="width:40%">
                 <div class="container">
                     <div class="row">
-                        <div class="col-10 mt-1">
+                        <div class="col-8 mt-1">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar"
                                     style="width: ${value}%; background-color: ${color};" aria-valuenow="${value}"
@@ -58,7 +58,7 @@ function craftRow(skill, value) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-1">
+                        <div class="col-3">
                             ${value}%
                         </div>
                     </div>

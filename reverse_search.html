@@ -31,6 +31,13 @@
             box-shadow: 0 0 0 3px #e3e3e3;
         }
 
+        #modalTable {
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 0 #e3e3e3;
+        }
+
         #mainTable {
             display: none;
         }
@@ -91,12 +98,39 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="d-flex row mt-5 col-8 mx-auto">
-            <table id="mainTable" class="table" style="background-color: white;">
+        <div class="d-flex row mt-5 col-10 mx-auto">
+            <table id="mainTable" class="table table-hover" style="background-color: white;">
                 <tbody>
                     <tr></tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="modalTable" class="table" style="background-color: white;">
+                        <div id="modalSpinner" class="spinner-grow spinner-border mx-auto" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <tbody>
+                            <tr id="toDelete"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -117,10 +151,9 @@
             $("#mainTable").fadeIn(1000);
         }
 
-        var main_skills = $("#mainSkills").val().replace(", ", "");
-        var additional_skills = $("#additionalSkills").val().replace(", ", "")
-		var all_skills = main_skills.concat("|").concat(additional_skills);
-
+        var main_skills = $("#mainSkills").val().replace(/, /g, ",");
+        var additional_skills = $("#additionalSkills").val().replace(/, /g, ",");
+        var all_skills = main_skills.concat("|").concat(additional_skills);
 
         console.log(all_skills);
         filled = true;
@@ -131,17 +164,19 @@
                 skills: all_skills
             },
             success: function (result) {
-                if (result === "") {
-
+                if (result === "[]") {
+                    notFound();
                 }
-                var result_arr = JSON.parse(result);
-                console.log(result_arr)
-                setTimeout(function () {
-                    result_arr.forEach(element => {
-                        addRow(element);
-                    });
-                }, 1000);
-
+                else {
+                    console.log(result);
+                    var result_arr = JSON.parse(result);
+                    console.log(result_arr)
+                    setTimeout(function () {
+                        result_arr.forEach(element => {
+                            addRow(element);
+                        });
+                    }, 1000);
+                }
             }
         });
     };
@@ -153,6 +188,51 @@
         $("#mainTable").fadeIn(1000);
 
         $('#mainTable tr:last').after(crafted);
+    }
+    
+    function craftModalRow(key, value) {
+        let row = `<tr>
+            <td align="center" id="skillName">${key}</td>
+            <td align="center">${value}</td>
+        </tr>`
+        return row;
+    }
+
+    function addModalRow(parsedRow) {
+        var crafted = craftModalRow(parsedRow.name, parsedRow.result);
+        console.log(crafted);
+
+        $("#modalSpinner").remove();
+
+        $("#modalTable").fadeIn(1000);
+        console.log($('#modalTable tr:last'));
+
+        $('#modalTable tr:last').after(crafted);
+    }
+
+    function onSkillClick(skill) {
+        console.log(skill);
+        fillModal(skill, 'dupa');
+        $("#exampleModalCenter").modal('show');
+    }
+
+    function fillModal(skill, data) {
+        $("#exampleModalCenter").find('#exampleModalCenterTitle').html(skill);
+        $("#modalTable").html("<tbody><tr id='toDelete'></tr></tbody>");
+
+        $.ajax({
+            url: "http://127.0.0.1:5000/stats",
+            data: {
+                text: $('#positionName').val(),
+                limit: 20
+            },
+            success: function(result) {
+                var result_arr = JSON.parse(result);
+                result_arr.forEach(element => {
+                    addModalRow(element);
+                });
+            }
+        });
     }
 </script>
 
