@@ -4,7 +4,7 @@ ENV WD=/home/app
 WORKDIR ${WD}
 
 COPY requirements.txt ${WD}
-COPY server.py ${WD}
+COPY . ${WD}
 RUN pip install -r requirements.txt
 
 CMD [ "python", "./server.py" ]
