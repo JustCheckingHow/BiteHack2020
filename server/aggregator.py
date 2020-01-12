@@ -7,12 +7,14 @@ import ast
 import numpy as np
 import re
 
+
 def term_in_doc(t, d):
     if t in d:
         return True
     else:
         return False
-    
+
+
 def calc_tfidf(t, d, D):
     """
     All specific role create a document    
@@ -29,7 +31,7 @@ def calc_tfidf(t, d, D):
 class Aggregator:
     synonyms = [
         ("developer", "engineer")
-        ]
+    ]
     forced = ["C", "java"]
 
     def __init__(self):
@@ -60,31 +62,64 @@ class Aggregator:
         # )
         df.to_pickle('db_large.pkl')
 
-
     def replace_with_synonyms(self, role):
         for i in Aggregator.synonyms:
             for word in role.split(' '):
                 if word in str(i):
                     role = role.replace(word, f"({'|'.join(i)})")
-        
+
         return role
 
     def force_boundaries(self, role):
         for word in role.split(' '):
             if word in Aggregator.forced:
                 role = role.replace(word, f"\\b{word}\\b")
-        
+
         return role
+
+    def preprocess_role(self, role):
+        role = role.replace("+", "\+")
+        role = self.replace_with_synonyms(role)
+        role = self.force_boundaries(role)
+        return role
+
+    def find_coocurring(self, skill):
+        """
+        Find most frequently coocurring skills
+        """
+        # role = self.preprocess_role(role)
+        # new_roles = self.db.loc[self.db['Role'].str.contains(
+        #     role, flags=re.IGNORECASE, regex=True)]
+
+        skill = skill.replace("+", "\+")
+        skill = self.force_boundaries(skill)
+        res = defaultdict(int)
+        rows_containing = self.db.loc[self.db['Tags'].astype(
+            str).str.contains(skill, flags=re.IGNORECASE, regex=True)]
+        flattened = []
+        for offer in rows_containing['Tags'].values:
+            flattened.extend(offer)
+        
+        c = Counter(flattened)
+        final_statistics = []
+        for k, v in c.most_common(10):
+            to_cmp = k.replace("+", "\+")
+            to_cmp = self.force_boundaries(to_cmp)
+            if to_cmp!=skill:
+                final_statistics.append({
+                    'name':
+                    k,
+                    'result':
+                    int(v/len(rows_containing)*100)
+                })
+        return json.dumps(final_statistics)
+
 
     def search_in_db(self, role, limit=None):
         """
         Return statistics for a role from a db 
         """
-        role = role.replace("+", "\+")
-        role = self.replace_with_synonyms(role)
-        role = self.force_boundaries(role)
-
-        print(role)
+        role = self.preprocess_role(role)
         new_roles = self.db.loc[self.db['Role'].str.contains(
             role, flags=re.IGNORECASE, regex=True)]
 
@@ -111,7 +146,7 @@ class Aggregator:
         global_counts = Counter()
         role_counts = {}
         for role in df['Role'].unique():
-            if not role: 
+            if not role:
                 continue
             skillset = df['Tags'].loc[df['Role'] == role].to_numpy()
             # flatten all tags
@@ -121,7 +156,7 @@ class Aggregator:
             if role not in role_counts:
                 role_counts[role] = Counter()
             role_counts[role] += tcount
-            
+
         tfidf_role = {}
         for role in df['Role'].unique():
             if not role:
@@ -134,8 +169,9 @@ class Aggregator:
                 score = calc_tfidf(skill, role_counts[role], role_counts)
                 # print(f"\t{skill}: {score}")
                 tfidf_role[role][skill] = score
-                
+
         return tfidf_role
+
 
 if __name__ == '__main__':
     ag = Aggregator()

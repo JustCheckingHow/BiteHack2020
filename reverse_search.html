@@ -212,8 +212,9 @@
 
     function onSkillClick(skill) {
         console.log(skill);
-        fillModal(skill, 'dupa');
-        $("#exampleModalCenter").modal('show');
+        window.location.replace("search.html?search="+skill);
+        // fillModal(skill, 'dupa');
+        // $("#exampleModalCenter").modal('show');
     }
 
     function fillModal(skill, data) {
