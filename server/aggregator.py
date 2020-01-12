@@ -28,9 +28,9 @@ def calc_tfidf(t, d, D):
 
 class Aggregator:
     def __init__(self):
-        self.src = '../data/stack_overflow_careers'
+        self.src = '../data/soc'
         self.SOC = StackOverflowCarrers(100)
-        self.db = pd.read_pickle('db.pkl')
+        self.db = pd.read_pickle('db_large.pkl')
         self.unique_roles = self.db['Role'].unique()
         self.role_tfidf = self.create_documents_counts(self.db)
 
@@ -53,7 +53,7 @@ class Aggregator:
         # parse string which encodes a list to an actual list
         # df['Skills'] = df['Tags'].apply(lambda x: np.array(ast.literal_eval(x))
         # )
-        df.to_pickle('db.pkl')
+        df.to_pickle('db_large.pkl')
 
     def search_in_db(self, role, limit=None):
         """
