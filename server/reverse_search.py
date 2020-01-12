@@ -1,6 +1,6 @@
 import pandas as pd
 import pickle
-from collections import defaultdict, Counter
+from collections import defaultdict, Counter, OrderedDict
 import json
 
 
@@ -13,7 +13,7 @@ class ReverseSearch:
             self.prepare_db()
     
     def prepare_db(self):
-        df = pickle.load(open("db.pkl", "rb"))
+        df = pickle.load(open("concat_db.pkl", "rb"))
         reverse_dict = defaultdict(list)
         
         for _, row in df.iterrows():
@@ -25,21 +25,35 @@ class ReverseSearch:
 
         pickle.dump(reverse_dict, open("reverse_dict.pkl", "wb"))
 
-    def perform_search(self, words, limit=None):
-        data = []
-        for word in words:
-            data.extend(self.reverse_dict[word])
+    def perform_search(self, required, additional, limit=None):
+        data = set(self.reverse_dict[required[0]])
+        for word in required:
+            temp = set(self.reverse_dict[word])
+            data = data.intersection(temp)
 
-        counter = Counter(data)
+        our_tags = set(additional)
+        scores = []
+        final_statistics = defaultdict(int)
 
-        final_statistics = defaultdict(dict)
-        for k, v in counter.most_common(limit):
-            final_statistics[k] = {
-            'count': v,
-            'percentage': v * 100 / len(words)
-        }
-        return json.dumps(final_statistics)
+        for role in data:
+            final_statistics[role] = 0
+
+        for tag in our_tags:
+            tag_roles = self.reverse_dict[tag]
+            for role in data:
+                if role in tag_roles:
+                    final_statistics[role] += 1
+
+        percentages = OrderedDict()
+        for e in final_statistics:
+            #print(final_statistics[e])
+            percentages[e] = int(final_statistics[e] * 100 / len(additional))
+        percentages = sorted(percentages.items(), key=lambda x: x[1], reverse=True) 
+        percentages = OrderedDict(percentages)
+        print(percentages)
+        return json.dumps(percentages)
 
 if __name__ == "__main__":
     rs = ReverseSearch()
-    rs.prepare_db()
+    #rs.prepare_db()
+    print(rs.perform_search(['java', 'javascript'], ['html']))

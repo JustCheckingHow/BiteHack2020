@@ -23,14 +23,18 @@ def hello():
 
 @app.route('/reverse_search', methods=['GET'])
 def reverse_search():
-    skills = request.args['skills'].lower().split("+")[:-1]
-    print(skills)
-    limit = request.args['limit']
+    skills = request.args['skills'].lower()
+    required, additional = skills.split("|")
+    required = required.split(",")
+    additional = additional.split(",")
+    print(required, additional)
+    limit = None
     try:
+        limit = request.args['limit']
         limit = int(limit)
     except:
         limit = None
-    return r_search.perform_search(skills, limit)
+    return r_search.perform_search(required, additional, 10)
 
 @app.route('/search', methods=['GET'])
 def search():
