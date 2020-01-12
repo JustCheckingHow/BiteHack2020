@@ -164,6 +164,21 @@ class Aggregator:
 
         return tfidf_role
 
+    def query_role_tfidf(self, role, limit=None):
+        try:
+            idfs = self.role_tfidf[role]
+            vals = [v for k, v in idfs.items()]
+            offset = abs(min(vals))
+            total = sum(vals)
+            res = sorted([(skill, (100 * (val + offset) / total))
+                          for skill, val in idfs.items()], lambda x: x[1])
+            if limit and final_roles and (len(final_roles) > limit):
+                return res[:limit]
+            else:
+                return res
+        except:
+            return json.dumps(None)
+
 
 if __name__ == '__main__':
     ag = Aggregator()
