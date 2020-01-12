@@ -44,14 +44,17 @@ class ReverseSearch:
                 if role in tag_roles:
                     final_statistics[role] += 1
 
-        percentages = OrderedDict()
-        for e in final_statistics:
-            #print(final_statistics[e])
-            percentages[e] = int(final_statistics[e] * 100 / len(additional))
-        percentages = sorted(percentages.items(), key=lambda x: x[1], reverse=True) 
-        percentages = OrderedDict(percentages)
-        print(percentages)
-        return json.dumps(percentages)
+        final_roles = []
+        for role in final_statistics:
+            val = int(final_statistics[role] * 100 / len(additional))
+            final_roles.append({
+                'role': role,
+                'percentage': val, 
+            })
+        final_roles = sorted(final_roles, key=lambda x: x['percentage'], reverse=True) 
+        if limit and final_roles and (len(final_roles) > limit):
+            final_roles = final_roles[:limit]
+        return json.dumps(final_roles)
 
 if __name__ == "__main__":
     rs = ReverseSearch()
