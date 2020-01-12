@@ -12,7 +12,7 @@ class noFluffJobsParser():
         self.ens_data = {
             'Role':       [],
             'Tags' :      [],
-            'additional': []
+            'Additional': []
         }
 
     def parse_data(self, data):
@@ -26,8 +26,14 @@ class noFluffJobsParser():
                 tags += [tag.getText().replace('\n','')]
 
         for aux in bs.find('nfj-posting-specs', {'id': 'posting-specs'}).findAll('div', {'class': 'row'}):
-            title = aux.find('div', {'class', 'col-sm-6'}).getText()
-            value = aux.find('div', {'class', 'col-sm-6 value'}).getText()
+
+            title = aux.find('div', {'class', 'col-sm-6'})
+            if title is not None:
+                title = title.getText()
+
+            value = aux.find('div', {'class', 'col-sm-6 value'})
+            if value is not None:
+                value = value.getText()
 
             additional[title] = value
 
@@ -45,7 +51,7 @@ class noFluffJobsParser():
                 if tags:
                     self.ens_data['Role'] += [role]
                     self.ens_data['Tags'] += [tags]
-                    self.ens_data['additional'] += [additional]
+                    self.ens_data['Additional'] += [additional]
 
 if __name__ == '__main__':
     parser = noFluffJobsParser()
