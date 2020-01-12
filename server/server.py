@@ -38,7 +38,16 @@ def reverse_search():
 
 @app.route('/search', methods=['GET'])
 def search():
+    print(request.args['text'])
     return aggregator.search_in_db(request.args['text'], int(request.args['limit']))
     
+@app.route('/stats', methods=['GET'])
+def stats():
+    return '''[{"name": "java", "result": 2.2234}, 
+            {"name": "c++", "result": 1.24},
+            {"name": "c", "result": 1.15}]
+
+            '''
+
 if __name__ == '__main__':
     app.run()

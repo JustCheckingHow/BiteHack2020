@@ -59,6 +59,7 @@ class Aggregator:
         """
         Return statistics for a role from a db 
         """
+        role = role.replace("+", "\+")
         new_roles = self.db.loc[self.db['Role'].str.contains(
             role, flags=re.IGNORECASE, regex=True)]
         all_tags = new_roles['Tags'].to_numpy()

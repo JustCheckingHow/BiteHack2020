@@ -32,6 +32,13 @@
             box-shadow: 0 0 0 3px #e3e3e3;
         }
 
+        #modalTable {
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 0 #e3e3e3;
+        }
+
         #mainTable {
             display: none;
         }
@@ -46,14 +53,14 @@
 
         .floatingNav {
             border-radius: 2px;
-            box-shadow: 0px 3px 0px #999;
+            box-shadow: 0px 6px 4px -4px #999;
         }
     </style>
 </head>
 
 <!-- #e1b794 #7f94a3 #e3e3e3-->
 
-<body style="background-color:#FAFAFA">
+<body style="background-color: #fafafa">
     <nav class="navbar navbar-expand-lg navbar-light sticky-top col-4">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
@@ -83,29 +90,93 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div class="d-flex row mt-5 col-8 mx-auto">
-            <div id="barChartContainer">
-                <canvas id="barChart"
+        <div class="d-flex row mt-3 col-8 mx-auto">
+            <div id="barChartContainer" class="pb-4">
+                <canvas id="barChart" class="pb-1"
                     style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
-                <div style="width: 100px; height: 100px; float: left; position: relative; transform: translate(18.1em,-9.5em)">
-                    <div onload="javascript:callCenterUpdate()" id="totalNum"
-                        style="width: 100%; height: 40px; position: absolute; visibility: hidden; top: 50%; left: 0; margin-top: -20px; line-height:19px; text-align: center; z-index: 999999999999999">
-                        0 </div>
-                </div>
+            </div>
 
-                <table id="mainTable" class="table" style="background-color: white;">
-                    <tbody>
-                        <tr></tr>
-                    </tbody>
-                </table>
+            <table id="mainTable" class="table table-hover mt-3" style="background-color: white;">
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="modalTable" class="table" style="background-color: white;">
+                        <div id="modalSpinner" class="spinner-grow spinner-border mx-auto" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <tbody>
+                            <tr id="toDelete"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
+    </div>
 </body>
 
 <script>
-    var randomColorGenerator = function () {
-        return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
-    };
+
+    Chart.pluginService.register({
+        beforeDraw: function (chart) {
+            if (chart.config.options.elements.center) {
+                //Get ctx from string
+                var ctx = chart.chart.ctx;
+
+                //Get options from the center object in options
+                var centerConfig = chart.config.options.elements.center;
+                var fontStyle = centerConfig.fontStyle || 'Arial';
+                var txt = centerConfig.text;
+                var color = centerConfig.color || '#000';
+                var sidePadding = centerConfig.sidePadding || 20;
+                var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                //Start with a base font of 30px
+                ctx.font = "30px " + fontStyle;
+
+                //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                var stringWidth = ctx.measureText(txt).width;
+                var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+                // Find out how much the font can grow in width.
+                var widthRatio = elementWidth / stringWidth;
+                var newFontSize = Math.floor(30 * widthRatio);
+                var elementHeight = (chart.innerRadius * 2);
+
+                // Pick a new font size so it will not be larger than the height of label.
+                var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+                //Set font settings to draw it correctly.
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                ctx.font = fontSizeToUse + "px " + fontStyle;
+                ctx.fillStyle = color;
+
+                //Draw text in center
+                ctx.fillText(txt, centerX, centerY);
+            }
+        }
+    });
+
+
 
     var options = {
         title: {
@@ -114,19 +185,73 @@
             position: 'top'
         },
         rotation: -0.7 * Math.PI,
-        resposive: true
+        resposive: true,
+        elements: {
+            center: {
+                text: '90%',
+                color: '#D6C9C9', // Default is #000000
+                fontStyle: 'Arial', // Default is Arial
+                sidePadding: 20 // Defualt is 20 (as a percentage)
+            }
+        }
     };
 
     var filled = false;
-    function oncallCenterUpdate(value) {
-        $("#totalNum").html(value)
-        $("#totalNum").css("visibility", "visible");
+
+    $(document).ready(function () {
+        onReady();
+    });
+
+    function onSkillClick(skill) {
+        console.log(skill);
+        fillModal(skill);
+        $("#exampleModalCenter").modal('show');
     }
+
+    function fillModal(skill) {
+        $("#exampleModalCenter").find('#exampleModalCenterTitle').html(skill);
+        $("#modalTable").html("<tbody><tr id='toDelete'></tr></tbody>");
+
+        $.ajax({
+            url: "http://127.0.0.1:5000/stats",
+            data: {
+                text: $('#positionName').val(),
+                limit: 20
+            },
+            success: function (result) {
+                var result_arr = JSON.parse(result);
+                result_arr.forEach(element => {
+                    addModalRow(element);
+                });
+            }
+        });
+    }
+
+    function craftModalRow(key, value) {
+        let row = `<tr>
+            <td align="center" id="skillName">${key}</td>
+            <td align="center">${value}</td>
+        </tr>`
+        return row;
+    }
+
+    function addModalRow(parsedRow) {
+        var crafted = craftModalRow(parsedRow.name, parsedRow.result);
+        console.log(crafted);
+
+        $("#modalSpinner").remove();
+
+        $("#modalTable").fadeIn(1000);
+        console.log($('#modalTable tr:last'));
+
+        $('#modalTable tr:last').after(crafted);
+    }
+
     $(window).scroll(function () {
-        if ($(window).scrollTop() > 10) {
-            $('#topBar').addClass('shadow-sm');
+        if ($(window).scrollTop() > 400) {
+            $('#topBar').addClass('floatingNav');
         } else {
-            $('#topBar').removeClass('shadow-sm');
+            $('#topBar').removeClass('floatingNav');
         }
     });
 
@@ -135,8 +260,8 @@
             $("#chartContainer").fadeOut(300);
 
             $("#mainTable").fadeOut(300);
-            $("#mainTable").html('<tr></tr>');
-            $("#barChartContainer").html('<canvas id="barChart" style = "padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;" ></canvas>');
+            $("#mainTable").html('<tbody><tr></tr></tbody>');
+            $("#barChartContainer").html('<canvas id="barChart" style = "padding-bottom: 15px; height: 370px; aspect-ratio: 4/3;" ></canvas>');
 
             $("#mainTable").fadeIn(1000);
         }
@@ -149,7 +274,7 @@
             url: "http://127.0.0.1:5000/search",
             data: {
                 text: $('#positionName').val(),
-                limit: 30
+                limit: 20
             },
             success: function (result) {
                 if (result == "\"\"") {
@@ -182,21 +307,21 @@
                         }],
                         labels: labelpoints
                     }
-                    $(document).ready(oncallCenterUpdate(sumOffers));
-
-                    var canvas = document.getElementById("barChart");
-                    var ctx = canvas.getContext('2d');
-                    var chart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: data,
-                        options: options
-                    });
-
+                    // $(document).ready(oncallCenterUpdate(sumOffers));           
                     setTimeout(function () {
-                        result_arr.forEach(element => {
-                            addRow(element);
+                        options.elements.center.text = sumOffers
+                        var canvas = document.getElementById("barChart");
+                        var ctx = canvas.getContext('2d');
+                        var chart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: data,
+                            options: options
                         });
                     }, 1000);
+                    result_arr.forEach(element => {
+                        addRow(element);
+                    });
+
                 }
             }
         });
@@ -210,6 +335,9 @@
 
         $('#mainTable tr:last').after(crafted);
     }
+
+
+
 </script>
 
 </html>
