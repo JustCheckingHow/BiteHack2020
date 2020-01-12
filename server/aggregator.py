@@ -30,6 +30,7 @@ class Aggregator:
     synonyms = [
         ("developer", "engineer")
         ]
+    forced = ["C", "java"]
 
     def __init__(self):
         self.src = '../data/soc'
@@ -68,12 +69,21 @@ class Aggregator:
         
         return role
 
+    def force_boundaries(self, role):
+        for word in role.split(' '):
+            if word in Aggregator.forced:
+                role = role.replace(word, f"\\b{word}\\b")
+        
+        return role
+
     def search_in_db(self, role, limit=None):
         """
         Return statistics for a role from a db 
         """
         role = role.replace("+", "\+")
         role = self.replace_with_synonyms(role)
+        role = self.force_boundaries(role)
+
         print(role)
         new_roles = self.db.loc[self.db['Role'].str.contains(
             role, flags=re.IGNORECASE, regex=True)]
