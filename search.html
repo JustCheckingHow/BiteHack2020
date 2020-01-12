@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -73,6 +74,7 @@
             </div>
         </div>
         <div class="d-flex row mt-5 col-8 mx-auto">
+            <canvas id="barChart" style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3;"></canvas>
             <table id="mainTable" class="table" style="background-color: white;">
                 <tbody>
                     <tr></tr>
@@ -83,6 +85,29 @@
 </body>
 
 <script>
+    var randomColorGenerator = function () {
+        return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+    };
+
+    var options = {
+        title: {
+            display: true,
+            text: 'What skills of important quality?',
+            position: 'top'
+        },
+        rotation: -0.7 * Math.PI,
+        resposive: true
+    };
+    let colorMap = {
+        0: "#e3e3e3",
+        20: "#7f94a3",
+        40: "#788AA3",
+        60: "#e1b794",
+        80: "#666A86",
+        100: "#DB2763"
+    }
+    let colorThres = Object.keys(colorMap)
+
     var filled = false;
 
     $(document).ready(function () {
@@ -91,6 +116,8 @@
 
     function callAjax() {
         if (filled) {
+            $("#chartContainer").fadeOut(300);
+
             $("#mainTable").fadeOut(300);
             $("#mainTable").html("<tr></tr>");
             $("#mainTable").fadeIn(1000);
@@ -107,14 +134,40 @@
                 limit: 10
             },
             success: function (result) {
-                if (result=="\"\"") {
+                if (result == "\"\"") {
                     notFound();
                 }
                 else {
                     console.log(result.length);
                     var result_arr = JSON.parse(result);
+                    let datapoints = []
+                    let labelpoints = []
+
+                    let c = 0
+                    let bckColors = []
                     result_arr.forEach(element => {
                         addRow(element);
+                        datapoints.push(element['percentage'])
+                        labelpoints.push(element['skill'])
+                        c++
+                    });
+
+                    data = {
+                        datasets: [{
+                            data: datapoints,
+                            backgroundColor: ['#E1B794', '#7F94A3', '#E3E3E3', '#DB2763',
+                                '#7392B7', '#C6CAED', '#A28497', '#73683B', '#583E23',
+                                '#E8EEF2', '#D6C9C9', '#90A9B7', '#8D5A97'],
+                        }],
+                        labels: labelpoints
+                    }
+
+                    var canvas = document.getElementById("barChart");
+                    var ctx = canvas.getContext('2d');
+                    var chart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: data,
+                        options: options
                     });
                 }
             }
@@ -131,6 +184,15 @@
     }
 
     function craftRow(skill, value) {
+        let color = colorMap[20]
+        for (let j = 0; j < colorThres.length; j++) {
+            if (colorThres[j] > value) {
+                break
+            }
+            else {
+                color = colorMap[colorThres[j]]
+            }
+        }
         row = `<tr>
                 <td align="left">${skill}</td>
                 <td align="center">
@@ -139,7 +201,7 @@
                             <div class="col-10 mt-1">
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar"
-                                        style="width: ${value}%; background-color: #e1b794;" aria-valuenow="${value}"
+                                        style="width: ${value}%; background-color: ${color};" aria-valuenow="${value}"
                                         aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
