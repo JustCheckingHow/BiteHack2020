@@ -117,10 +117,9 @@
             $("#mainTable").fadeIn(1000);
         }
 
-        var main_skills = $("#mainSkills").val().replace(", ", "");
-        var additional_skills = $("#additionalSkills").val().replace(", ", "")
-		var all_skills = main_skills.concat("|").concat(additional_skills);
-
+        var main_skills = $("#mainSkills").val().replace(/, /g, ",");
+        var additional_skills = $("#additionalSkills").val().replace(/, /g, ",");
+        var all_skills = main_skills.concat("|").concat(additional_skills);
 
         console.log(all_skills);
         filled = true;
@@ -131,17 +130,19 @@
                 skills: all_skills
             },
             success: function (result) {
-                if (result === "") {
-
+                if (result === "[]") {
+                    notFound();
                 }
-                var result_arr = JSON.parse(result);
-                console.log(result_arr)
-                setTimeout(function () {
-                    result_arr.forEach(element => {
-                        addRow(element);
-                    });
-                }, 1000);
-
+                else {
+                    console.log(result);
+                    var result_arr = JSON.parse(result);
+                    console.log(result_arr)
+                    setTimeout(function () {
+                        result_arr.forEach(element => {
+                            addRow(element);
+                        });
+                    }, 1000);
+                }
             }
         });
     };
