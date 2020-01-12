@@ -161,11 +161,21 @@
 
     function fillModal(skill, data) {
         $("#exampleModalCenter").find('#exampleModalCenterTitle').html(skill);
-        $("#modalTable").html("<tbody><tr></tr></tbody>");
+        $("#modalTable").html("<tbody><tr id='toDelete'></tr></tbody>");
 
-        addModalRow("asd");
-        addModalRow("asd");
-        $("#toDelete").remove();
+        $.ajax({
+            url: "http://127.0.0.1:5000/stats",
+            data: {
+                text: $('#positionName').val(),
+                limit: 20
+            },
+            success: function(result) {
+                var result_arr = JSON.parse(result);
+                result_arr.forEach(element => {
+                    addModalRow(element);
+                });
+            }
+        });
     }
 
     function craftModalRow(key, value) {
@@ -177,10 +187,13 @@
     }
 
     function addModalRow(parsedRow) {
-        var crafted = craftModalRow("asdf", "qweqwe");
+        var crafted = craftModalRow(parsedRow.name, parsedRow.result);
+        console.log(crafted);
+
         $("#modalSpinner").remove();
 
         $("#modalTable").fadeIn(1000);
+        console.log($('#modalTable tr:last'));
 
         $('#modalTable tr:last').after(crafted);
     }
