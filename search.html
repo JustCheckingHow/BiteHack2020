@@ -38,13 +38,17 @@
         .spinner-border {
             color: #e3e3e3;
         }
+
+        .navbar {
+            z-index: 1021;
+        }
     </style>
 </head>
 
 <!-- #e1b794 #7f94a3 #e3e3e3-->
 
 <body style="background-color:#FAFAFA">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top col-4">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Search <span class="sr-only">(current)</span></a>
@@ -74,7 +78,8 @@
             </div>
         </div>
         <div class="d-flex row mt-5 col-8 mx-auto">
-            <canvas id="barChart" style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3;"></canvas>
+            <canvas id="barChart"
+                style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
             <table id="mainTable" class="table" style="background-color: white;">
                 <tbody>
                     <tr></tr>
