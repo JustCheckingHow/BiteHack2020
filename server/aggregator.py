@@ -30,7 +30,7 @@ class Aggregator:
     def __init__(self):
         self.src = '../data/soc'
         self.SOC = StackOverflowCarrers(100)
-        self.db = pd.read_pickle('db_large.pkl')
+        self.db = pd.read_pickle('concat_db.pkl')
         self.unique_roles = self.db['Role'].unique()
         self.role_tfidf = self.create_documents_counts(self.db)
 

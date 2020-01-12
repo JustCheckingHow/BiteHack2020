@@ -119,15 +119,11 @@
 
         var main_skills = $("#mainSkills").val();
         var additional_skills = $("#additionalSkills").val();
-        //var all_skills = main_skills.split(',').concat(additional_skills.split(','));
 		var all_skills = main_skills.concat("|").concat(additional_skills);
-        /*all_skills = all_skills.map(function (e) {
-            e = e.trim();
-            return e;
-        });*/
-        //all_skills = all_skills.join('|');
+
 
         console.log(all_skills);
+        filled = true;
         $("#spinner").css("visibility", "visible");
         $.ajax({
             url: "http://127.0.0.1:5000/reverse_search",
@@ -139,6 +135,7 @@
 
                 }
                 var result_arr = JSON.parse(result);
+                console.log(result_arr)
                 setTimeout(function () {
                     result_arr.forEach(element => {
                         addRow(element);
@@ -150,8 +147,7 @@
     };
 
     function addRow(parsedRow) {
-        console.log(parsedRow);
-        var crafted = craftRow(parsedRow.title, parsedRow.result);
+        var crafted = craftRow(parsedRow.role, parsedRow.percentage);
         $("#spinner").remove();
 
         $("#mainTable").fadeIn(1000);

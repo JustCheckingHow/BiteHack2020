@@ -24,7 +24,27 @@ function onReady() {
     });
 }
 
+
+let colorMap = {
+    0: "#a3a3a3",
+    20: "#7f94a3",
+    40: "#788AA3",
+    60: "#e1b794",
+    100: "#DB2763"
+}
+let colorThres = Object.keys(colorMap)
+
 function craftRow(skill, value) {
+    let color = colorMap[20]
+    for (let j = 0; j < colorThres.length; j++) {
+        if (colorThres[j] > value) {
+            break
+        }
+        else {
+            color = colorMap[colorThres[j]]
+        }
+    }
+
     row = `<tr class="clickable-row" onclick='onSkillClick("${skill}")'>
             <td align="left" id="skillName">${skill}</td>
             <td align="center">
@@ -33,7 +53,7 @@ function craftRow(skill, value) {
                         <div class="col-10 mt-1">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar"
-                                    style="width: ${value}%; background-color: #e1b794;" aria-valuenow="${value}"
+                                    style="width: ${value}%; background-color: ${color};" aria-valuenow="${value}"
                                     aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>

@@ -91,12 +91,12 @@
             </div>
         </div>
         <div class="d-flex row mt-5 col-8 mx-auto">
-            <div id="barChartContainer">
-                <canvas id="barChart"
-                    style="padding-bottom: 15px; height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
+            <div id="barChartContainer" class="pb-4">
+                <canvas id="barChart" class="pb-1"
+                    style="height: 370px; aspect-ratio: 4/3; margin-top: 5px;"></canvas>
             </div>
 
-            <table id="mainTable" class="table table-hover" style="background-color: white;">
+            <table id="mainTable" class="table table-hover mt-3" style="background-color: white;">
                 <tbody>
                     <tr></tr>
                 </tbody>
@@ -146,15 +146,6 @@
         rotation: -0.7 * Math.PI,
         resposive: true
     };
-    let colorMap = {
-        0: "#a3a3a3",
-        20: "#7f94a3",
-        40: "#788AA3",
-        60: "#e1b794",
-        80: "#666A86",
-        100: "#DB2763"
-    }
-    let colorThres = Object.keys(colorMap)
 
     var filled = false;
 
