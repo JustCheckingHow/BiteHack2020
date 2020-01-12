@@ -3,6 +3,7 @@
 
 <head>
     <title>Hexa search</title>
+    <link rel="icon" href="img/logo.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -200,23 +201,35 @@
 
     $(document).ready(function () {
         onReady();
+        let query = getUrlParameter("search");
+        if(query!=undefined){
+            $('#positionName').val(query);
+        }
+        callAjax();
     });
 
-    function onSkillClick(skill) {
+    async function onSkillClick(skill) {
+        showModal().then(
+            function () {
+                fillModal(skill)
+            });
         console.log(skill);
-        fillModal(skill);
+    }
+
+    async function showModal() {
+        console.log("showing");
         $("#exampleModalCenter").modal('show');
     }
 
-    function fillModal(skill) {
+    async function fillModal(skill) {
         $("#exampleModalCenter").find('#exampleModalCenterTitle').html(skill);
         $("#modalTable").html("<tbody><tr id='toDelete'></tr></tbody>");
 
         $.ajax({
             url: "http://127.0.0.1:5000/stats",
             data: {
-                text: $('#positionName').val(),
-                limit: 20
+                skill: $('#exampleModalCenterTitle').html(),
+                limit: 10
             },
             success: function (result) {
                 var result_arr = JSON.parse(result);
@@ -230,15 +243,13 @@
     function craftModalRow(key, value) {
         let row = `<tr>
             <td align="center" id="skillName">${key}</td>
-            <td align="center">${value}</td>
+            <td align="center">${value}%</td>
         </tr>`
         return row;
     }
 
     function addModalRow(parsedRow) {
         var crafted = craftModalRow(parsedRow.name, parsedRow.result);
-        console.log(crafted);
-
         $("#modalSpinner").remove();
 
         $("#modalTable").fadeIn(1000);
@@ -288,15 +299,16 @@
 
                     let c = 0
                     let bckColors = []
-                    let sumOffers = 0
+                    let sumOffers = result_arr[0]['unique']
                     result_arr.forEach(element => {
                         // addRow(element);
-                        datapoints.push(element['percentage'])
-                        labelpoints.push(element['skill'])
-                        sumOffers += element['count']
+                        if (element['count'] != undefined) {
+                            datapoints.push(element['count'])
+                            labelpoints.push(element['skill'])
+                        }
+                        // sumOffers += element['count']
                         c++
                     });
-
 
                     data = {
                         datasets: [{
@@ -328,15 +340,31 @@
     };
 
     function addRow(parsedRow) {
-        var crafted = craftRow(parsedRow.skill, parsedRow.percentage);
-        $("#spinner").remove();
+        if (parsedRow['skill'] != undefined) {
 
-        $("#mainTable").fadeIn(1000);
+            var crafted = craftRow(parsedRow.skill, parsedRow.percentage);
+            $("#spinner").remove();
 
-        $('#mainTable tr:last').after(crafted);
+            $("#mainTable").fadeIn(1000);
+
+            $('#mainTable tr:last').after(crafted);
+        }
     }
 
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
 
 </script>
 

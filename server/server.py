@@ -43,11 +43,12 @@ def search():
     
 @app.route('/stats', methods=['GET'])
 def stats():
-    return '''[{"name": "java", "result": 2.2234}, 
-            {"name": "c++", "result": 1.24},
-            {"name": "c", "result": 1.15}]
+    return aggregator.find_coocurring(request.args['skill'])
+    # return '''[{"name": "java", "result": 2.2234}, 
+    #         {"name": "c++", "result": 1.24},
+    #         {"name": "c", "result": 1.15}]
 
-            '''
+    #         '''
 
 if __name__ == '__main__':
     app.run()

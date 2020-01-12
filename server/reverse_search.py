@@ -7,7 +7,7 @@ import json
 class ReverseSearch:
     def __init__(self):
         try:
-            self.reverse_dict = pickle.load(open("reverse_dict.pkl", "rb"))
+            self.reverse_dict = pickle.load(open("reverse_dict2.pkl", "rb"))
         except:
             print("Unable to load pickle, generating...")
             self.prepare_db()
@@ -23,7 +23,7 @@ class ReverseSearch:
         for key in reverse_dict.keys():
             reverse_dict[key] = set(reverse_dict[key])
 
-        pickle.dump(reverse_dict, open("reverse_dict.pkl", "wb"))
+        pickle.dump(reverse_dict, open("reverse_dict2.pkl", "wb"))
 
     def perform_search(self, required, additional, limit=None):
         data = set(self.reverse_dict[required[0]])
