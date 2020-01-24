@@ -25,8 +25,8 @@ def hello():
 def reverse_search():
     skills = request.args['skills'].lower()
     required, additional = skills.split("|")
-    required = required.split(",")
-    additional = additional.split(",")
+    required = list(set(required.split(",")))
+    additional = list(set(additional.split(",")))
     print(required, additional)
     limit = None
     try:
@@ -43,11 +43,12 @@ def search():
     
 @app.route('/stats', methods=['GET'])
 def stats():
-    return '''[{"name": "java", "result": 2.2234}, 
-            {"name": "c++", "result": 1.24},
-            {"name": "c", "result": 1.15}]
+    return aggregator.find_coocurring(request.args['skill'])
+    # return '''[{"name": "java", "result": 2.2234}, 
+    #         {"name": "c++", "result": 1.24},
+    #         {"name": "c", "result": 1.15}]
 
-            '''
+    #         '''
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")

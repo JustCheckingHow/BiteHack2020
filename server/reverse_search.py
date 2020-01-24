@@ -7,23 +7,23 @@ import json
 class ReverseSearch:
     def __init__(self):
         try:
-            self.reverse_dict = pickle.load(open("reverse_dict.pkl", "rb"))
+            self.reverse_dict = pickle.load(open("reverse_dict2.pkl", "rb"))
         except:
             print("Unable to load pickle, generating...")
             self.prepare_db()
-    
+
     def prepare_db(self):
-        df = pickle.load(open("concat_db.pkl", "rb"))
+        df = pickle.load(open("concat_db2.pkl", "rb"))
         reverse_dict = defaultdict(list)
-        
+
         for _, row in df.iterrows():
             for tag in list(row['Tags']):
                 reverse_dict[tag].append(row['Role'].replace("'", ""))
-        
+
         for key in reverse_dict.keys():
             reverse_dict[key] = set(reverse_dict[key])
 
-        pickle.dump(reverse_dict, open("reverse_dict.pkl", "wb"))
+        pickle.dump(reverse_dict, open("reverse_dict2.pkl", "wb"))
 
     def perform_search(self, required, additional, limit=None):
         data = set(self.reverse_dict[required[0]])
@@ -49,14 +49,17 @@ class ReverseSearch:
             val = int(final_statistics[role] * 100 / len(additional))
             final_roles.append({
                 'role': role,
-                'percentage': val, 
+                'percentage': val,
             })
-        final_roles = sorted(final_roles, key=lambda x: x['percentage'], reverse=True) 
+        final_roles = sorted(final_roles,
+                             key=lambda x: x['percentage'],
+                             reverse=True)
         if limit and final_roles and (len(final_roles) > limit):
             final_roles = final_roles[:limit]
         return json.dumps(final_roles)
 
+
 if __name__ == "__main__":
     rs = ReverseSearch()
-    #rs.prepare_db()
+    # rs.prepare_db()
     print(rs.perform_search(['java', 'javascript'], ['html']))
