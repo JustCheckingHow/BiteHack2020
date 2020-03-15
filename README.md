@@ -19,3 +19,13 @@ Backend code is located under server/ directory. It consists of *server.py* file
  - aggregate.py - file with class able to build search df and find skill sumarization.
  
 There is also nofluffjobs scrapper in noFluffJobs/ directory. It uses selenium with chromedriver, because noFluffJobs uses mainly js.
+
+The tool is available online as http://bit.ly/hexa-search-persistent
+
+## Screenshots
+Main search:
+![alt text](img/firefox_mFZp4wN43j.png)
+
+Reverse search:
+![alt text](img/firefox_a5xyh5JtJa.png)
+
